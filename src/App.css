@@ -36,3 +36,111 @@
     transform: rotate(360deg);
   }
 }
+
+/* Navbar Styling */
+.navbar {
+  background-color: #fff;
+  padding: 1rem 2rem;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 1.5rem; /* This adds space between navbar items */
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.navbar-item:hover {
+  text-decoration: underline;
+}
+/* Rainbow Banner Styles */
+.rainbow-banner-gradient-1 {
+  background: linear-gradient(
+    to right,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #80ff00,
+    #00ff00,
+    #00ff80,
+    #00ffff,
+    #0080ff,
+    #0000ff,
+    #8000ff,
+    #ff00ff,
+    #ff0080
+  );
+  opacity: 0.7;
+  background-size: 200% 100%;
+}
+
+.rainbow-banner-gradient-2 {
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.5),
+    rgba(255, 128, 0, 0.5),
+    rgba(255, 255, 0, 0.5),
+    rgba(128, 255, 0, 0.5),
+    rgba(0, 255, 0, 0.5),
+    rgba(0, 255, 128, 0.5),
+    rgba(0, 255, 255, 0.5),
+    rgba(0, 128, 255, 0.5),
+    rgba(0, 0, 255, 0.5),
+    rgba(128, 0, 255, 0.5),
+    rgba(255, 0, 255, 0.5),
+    rgba(255, 0, 128, 0.5)
+  );
+  animation: rainbow-animation 10s linear infinite;
+  opacity: 0.3;
+  background-size: 200% 100%;
+}
+
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.z-\[-1\] {
+  z-index: -1;
+}
+
+.bg-background {
+  background-color: transparent;
+}
