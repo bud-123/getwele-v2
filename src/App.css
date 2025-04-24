@@ -144,3 +144,49 @@
 .bg-background {
   background-color: transparent;
 }
+
+.footer {
+  padding: 1rem;
+  background-color: #f8f8f8;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsive layout styles */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin-top: 10px;
+  }
+  
+  .navbar-menu.show {
+    display: flex;
+  }
+  
+  /* We'll handle the mobile-menu-button with inline styles now */
+  
+  .navbar-item {
+    padding: 0.5rem 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-button {
+    display: none;
+  }
+}

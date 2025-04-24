@@ -1,13 +1,21 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { Banner } from "../components/ui/Banner";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 interface PageLayoutProps {
   children: ReactNode;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <div className="page-layout">
       <Banner 
@@ -17,22 +25,62 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
         height="2rem"
       />
       <nav className="navbar">
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
-            <img src={require("../Assets/Images/getwele-logo.jpg")} alt="GetWele Logo" style={{ height: "100px", maxWidth: "100%" }} />
-          </Link>
-          <div className="navbar-menu">
-            <Link to="/" className="navbar-item">Home</Link>
-            <Link to="/about" className="navbar-item">About</Link>
-            <Link to="/research" className="navbar-item">Research</Link>
-            <Link to="/products" className="navbar-item">Products</Link>
-            <Link to="/contact" className="navbar-item">Contact</Link>
+        <div className="navbar-container" style={{ 
+          position: 'relative',
+          padding: isMobile ? '0 15px' : '0'
+        }}>
+          <div style={{ 
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%'
+          }}>
+            <Link to="/" className="navbar-logo">
+              <img src={require("../Assets/Images/getwele-logo.jpg")} alt="GetWele Logo" style={{ 
+                height: isMobile ? "80px" : "100px", 
+                maxWidth: "100%" 
+              }} />
+            </Link>
+            
+            <button 
+              className="mobile-menu-button" 
+              onClick={toggleMobileMenu}
+              style={{ 
+                position: 'relative',
+                top: 'auto',
+                right: 'auto',
+                display: isMobile ? 'flex' : 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'none',
+                border: 'none',
+                padding: '10px',
+                cursor: 'pointer'
+              }}
+            >
+              <span className="material-icons" style={{ fontSize: '28px' }}>
+                {mobileMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
+          
+          <div className={`navbar-menu ${mobileMenuOpen ? 'show' : ''}`}>
+            <Link to="/" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link to="/about" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link to="/research" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Research</Link>
+            <Link to="/products" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+            <Link to="/contact" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
           </div>
         </div>
       </nav>
       <main className="content">
         {children}
       </main>
+      <footer className="footer">
+        <div className="footer-content">
+          Copyright © 2025 Getwele Natureceuticals. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 };
