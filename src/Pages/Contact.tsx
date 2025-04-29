@@ -125,7 +125,7 @@ const Contact: React.FC = () => {
                   Halethorpe, MD 21227
                 </p>
                 <p style={{ marginBottom: '5px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
-                  Room: XXX
+                  Room: 2021
                 </p>
               </div>
             </div>

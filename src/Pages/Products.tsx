@@ -11,7 +11,25 @@ const Products: React.FC = () => {
         
         <div className="product-cards">
           {/* SMAASH-C Product Card */}
-          <div className="product-card" style={{ backgroundColor: '#4CAF50' }}>
+          <div className="product-card" style={{ backgroundColor: '#4CAF50', position: 'relative' }}>
+            {/* Pending Badge */}
+            <span
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                background: '#000',
+                color: '#fff',
+                borderRadius: '999px',
+                padding: '4px 16px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                letterSpacing: '1px',
+                zIndex: 2,
+              }}
+            >
+              Pending
+            </span>
             <div className="product-content">
               <div className="product-info">
                 <h2 className="product-name">SMAASH-C</h2>
@@ -34,7 +52,25 @@ const Products: React.FC = () => {
           </div>
           
           {/* SMAASH-A Product Card */}
-          <div className="product-card" style={{ backgroundColor: '#FF6B6B' }}>
+          <div className="product-card" style={{ backgroundColor: '#FF6B6B', position: 'relative' }}>
+            {/* Pending Badge */}
+            <span
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                background: '#000',
+                color: '#fff',
+                borderRadius: '999px',
+                padding: '4px 16px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                letterSpacing: '1px',
+                zIndex: 2,
+              }}
+            >
+              Pending
+            </span>
             <div className="product-content">
               <div className="product-info">
                 <h2 className="product-name">SMAASH-A</h2>
@@ -50,6 +86,47 @@ const Products: React.FC = () => {
                 <img 
                   src={require("../Assets/Products/smaash-a-image.png")} 
                   alt="SMAASH-A Product" 
+                  className="product-image"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* SMAASH-H Product Card */}
+          <div className="product-card" style={{ backgroundColor: '#3B82F6', position: 'relative' }}>
+            {/* Pending Badge */}
+            <span
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                background: '#000',
+                color: '#fff',
+                borderRadius: '999px',
+                padding: '4px 16px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                letterSpacing: '1px',
+                zIndex: 2,
+              }}
+            >
+              Pending
+            </span>
+            <div className="product-content">
+              <div className="product-info">
+                <h2 className="product-name">SMAASH-H</h2>
+                <p className="product-description">
+                  SMAASH-H is a propriety blend of nutritional supplements which will be provided under qualified supervision.
+                </p>
+                <p className="product-benefit">
+                  Specific Benefit: Help the body to synthesize and block the break down of endorphines and enkephalines which are natural pain killers.
+                </p>
+                <button className="learn-more-btn">Learn More</button>
+              </div>
+              <div className="product-image-container">
+                <img 
+                  src={require("../Assets/Products/Smaash-H-image.png")} 
+                  alt="SMAASH-H Product" 
                   className="product-image"
                 />
               </div>

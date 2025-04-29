@@ -6,24 +6,75 @@ const About = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isTablet = useMediaQuery('(max-width: 1024px)');
   
+  // Carousel state
+  const heroImages = [
+    require("../Assets/Images/about-hero.jpg"),
+    require("../Assets/Images/about-mission-image2.png"),
+    require("../Assets/Images/about-mission-image3.png"),
+  ];
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [fade, setFade] = React.useState(true);
+
+  // Auto-scroll effect
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // Start fade out
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+        setFade(true); // Fade in new image
+      }, 400); // Duration matches CSS transition
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
+  // Manual navigation
+  const goToPrev = () => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+      setFade(true);
+    }, 400);
+  };
+  const goToNext = () => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+      setFade(true);
+    }, 400);
+  };
+
   return (
     <PageLayout>
       <div>
-        <div className="hero-section" style={{ 
-          width: '100%', 
+        {/* HERO CAROUSEL */}
+        <div className="hero-section" style={{
+          width: '100%',
           height: isMobile ? '400px' : '600px',
           position: 'relative',
           overflow: 'hidden'
         }}>
-          <img 
-            src={require("../Assets/Images/about-hero.jpg")} 
-            alt="About Getwele" 
+          <div
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover'
+              transition: 'opacity 0.4s ease',
+              opacity: fade ? 1 : 0,
+              position: 'absolute',
+              top: 0,
+              left: 0,
             }}
-          />
+          >
+            <img
+              src={heroImages[currentIndex]}
+              alt="About Getwele"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+          </div>
           <div style={{
             position: 'absolute',
             top: 0,
@@ -46,6 +97,51 @@ const About = () => {
               WHO WE ARE
             </h1>
           </div>
+          {/* Chevron Buttons */}
+          <button
+            onClick={goToPrev}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '20px',
+              transform: 'translateY(-50%)',
+              background: 'rgba(0,0,0,0.4)',
+              border: 'none',
+              borderRadius: '50%',
+              color: 'white',
+              fontSize: '2rem',
+              width: '40px',
+              height: '40px',
+              cursor: 'pointer',
+              zIndex: 3,
+              display: isMobile ? 'none' : 'block'
+            }}
+            aria-label="Previous"
+          >
+            &#8249;
+          </button>
+          <button
+            onClick={goToNext}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              right: '20px',
+              transform: 'translateY(-50%)',
+              background: 'rgba(0,0,0,0.4)',
+              border: 'none',
+              borderRadius: '50%',
+              color: 'white',
+              fontSize: '2rem',
+              width: '40px',
+              height: '40px',
+              cursor: 'pointer',
+              zIndex: 3,
+              display: isMobile ? 'none' : 'block'
+            }}
+            aria-label="Next"
+          >
+            &#8250;
+          </button>
         </div>
         
         <div className="about-content" style={{ 

@@ -35,8 +35,8 @@ const Home: React.FC = () => {
             }}>
               Smash<br />
               Your<br />
-              Cravings<br />
-              Naturally
+              Drug<br />
+              Seeking
             </h1>
             <h3 style={{
               fontWeight: 'normal',
@@ -55,7 +55,8 @@ const Home: React.FC = () => {
               borderRadius: '30px',
               fontSize: '1.2rem',
               fontWeight: 'bold',
-              marginTop: '20px'
+              marginTop: '20px',
+              marginBottom: '20px'
             }}>
               START YOUR JOURNEY &nbsp;<span className="material-icons" style={{ verticalAlign: 'middle', fontSize: '1.4rem' }}>chevron_right</span>
             </Link>
@@ -68,8 +69,8 @@ const Home: React.FC = () => {
             width: isMobile ? '100%' : 'auto'
           }}>
             <img 
-              src={require("../Assets/Images/smaashc_hero.png")} 
-              alt="SmaashC Product"
+              src={require("../Assets/Images/getwele-hero-im.png")} 
+              alt="Smaash Products"
               style={{
                 height: 'auto',
                 maxHeight: '100%',
@@ -111,7 +112,7 @@ const Home: React.FC = () => {
               left: 0, 
               right: 0 
             }}></div>
-            <h3 style={{ color: '#222', fontSize: '1.5rem', marginBottom: '15px', fontWeight: '600' }}>What's Wrong With Current Services?</h3>
+            <h3 style={{ color: '#222', fontSize: '1.5rem', marginBottom: '15px', fontWeight: '600' }}>How Can We Make Current Recovery More Effective?</h3>
             <div style={{
               width: '80px',
               height: '80px',
@@ -162,7 +163,7 @@ const Home: React.FC = () => {
             }}>
               <span className="material-icons" style={{ fontSize: '40px', color: '#4DA6FF' }}>science</span>
             </div>
-            <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>When experiencing addiction, our <strong>brain's biochemistry</strong> is altered.</p>
+            <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>When experiencing the desire to seek alcohol and other elicit substances, our <strong>brain's biochemistry</strong> is altered.</p>
             <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Getwele focuses on the <strong>biochemistry of the individual</strong>.</p>
             <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Getwele <strong>prolongs the detox period</strong> to help you change your behavior and <strong>medically manage cravings</strong>.</p>
           </div>
