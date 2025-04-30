@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/getwele-v2/static/css/main.97eaaacc.css",
-    "main.js": "/getwele-v2/static/js/main.3c49e63e.js",
+    "main.js": "/getwele-v2/static/js/main.c1f48d4a.js",
     "static/js/453.4e4e2421.chunk.js": "/getwele-v2/static/js/453.4e4e2421.chunk.js",
     "static/media/about-hero.jpg": "/getwele-v2/static/media/about-hero.9f99ab3d6849253c8e3c.jpg",
     "static/media/about-mission-image2.png": "/getwele-v2/static/media/about-mission-image2.fe7e50651f4cfb1b03f1.png",
@@ -23,11 +23,11 @@
     "static/media/getwele-logo.jpg": "/getwele-v2/static/media/getwele-logo.75da65b70f0fc08d8518.jpg",
     "index.html": "/getwele-v2/index.html",
     "main.97eaaacc.css.map": "/getwele-v2/static/css/main.97eaaacc.css.map",
-    "main.3c49e63e.js.map": "/getwele-v2/static/js/main.3c49e63e.js.map",
+    "main.c1f48d4a.js.map": "/getwele-v2/static/js/main.c1f48d4a.js.map",
     "453.4e4e2421.chunk.js.map": "/getwele-v2/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97eaaacc.css",
-    "static/js/main.3c49e63e.js"
+    "static/js/main.c1f48d4a.js"
   ]
 }
