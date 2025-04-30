@@ -11,6 +11,7 @@
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^6.15.0",
@@ -22,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "dotenv -e .env -- gh-pages -d build -u \"Basil Udo <basil@xeddy.app>\" -r https://$GH_TOKEN@github.com/bud-123/getwele-v2.git"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +47,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "dotenv-cli": "^8.0.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4"
-  }
+  },
+  "homepage": "https://bud-123.github.io/getwele-v2/"
 }
