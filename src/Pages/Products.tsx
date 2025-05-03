@@ -12,7 +12,7 @@ const Products: React.FC = () => {
         <div className="product-cards">
           {/* SMAASH-C Product Card */}
           <div className="product-card" style={{ backgroundColor: '#4CAF50', position: 'relative' }}>
-            {/* Pending Badge */}
+            {/* 
             <span
               style={{
                 position: 'absolute',
@@ -30,6 +30,7 @@ const Products: React.FC = () => {
             >
               Pending
             </span>
+            */}
             <div className="product-content">
               <div className="product-info">
                 <h2 className="product-name">SMAASH-C</h2>
@@ -53,7 +54,7 @@ const Products: React.FC = () => {
           
           {/* SMAASH-A Product Card */}
           <div className="product-card" style={{ backgroundColor: '#FF6B6B', position: 'relative' }}>
-            {/* Pending Badge */}
+            {/* 
             <span
               style={{
                 position: 'absolute',
@@ -71,6 +72,7 @@ const Products: React.FC = () => {
             >
               Pending
             </span>
+            */}
             <div className="product-content">
               <div className="product-info">
                 <h2 className="product-name">SMAASH-A</h2>
@@ -94,7 +96,7 @@ const Products: React.FC = () => {
           
           {/* SMAASH-H Product Card */}
           <div className="product-card" style={{ backgroundColor: '#3B82F6', position: 'relative' }}>
-            {/* Pending Badge */}
+            {/* 
             <span
               style={{
                 position: 'absolute',
@@ -112,6 +114,7 @@ const Products: React.FC = () => {
             >
               Pending
             </span>
+            */}
             <div className="product-content">
               <div className="product-info">
                 <h2 className="product-name">SMAASH-H</h2>
