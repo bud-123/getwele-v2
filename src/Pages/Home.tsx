@@ -32,6 +32,26 @@ interface HomePageData {
     };
   };
   cards: CardContent[];
+  researchSection?: {
+    title: string;
+    introText: string;
+    conclusionText: string;
+    factors: {
+      title: string;
+      description: string;
+      color: string;
+    }[];
+  };
+  assamLevelsSection?: {
+    title: string;
+    introText: string;
+    subIntroText: string;
+    levels: {
+      levelName: string;
+      description: string;
+      color: string;
+    }[];
+  };
   seo?: {
     title: string;
     description: string;
@@ -72,16 +92,16 @@ const Home: React.FC = () => {
       color: "#FF6B6B",
       content: [
         {
-          text: "When we're addicted, our behaviors prolong decision-making.",
+          text: "When we have Substance Use Disorder problems, our addictive behaviors prolong decision-making.",
           highlightedPhrases: ["prolong decision-making"]
         },
         {
-          text: "Existing services often focus on a short period of time (3 days in many cases).",
-          highlightedPhrases: []
+          text: "Existing services often focus on a short period of intervention time and do not address depletion of micro and macronutrients that are lost in the brain during drug use. This can lead to perpetual unwellness feelings in Substance Use Disorder Individuals (SUDIs).",
+          highlightedPhrases: ["depletion of micro and macronutrients", "perpetual unwellness feelings"]
         },
         {
-          text: "It's not long enough to change our behavior.",
-          highlightedPhrases: ["not long enough"]
+          text: "This can make their recovery decisions unachievable.",
+          highlightedPhrases: ["unachievable"]
         }
       ]
     },
@@ -91,16 +111,12 @@ const Home: React.FC = () => {
       color: "#4DA6FF",
       content: [
         {
-          text: "When experiencing the desire to seek alcohol and other elicit substances, our brain's biochemistry is altered.",
-          highlightedPhrases: ["brain's biochemistry"]
+          text: "When experiencing the desire to seek alcohol and other illicit substances, our brain's biochemistry is altered. This can lead to persistent craving that drives relapse leading to compulsive use with consequences in nutritional deficiencies and sometimes immune deficiencies.",
+          highlightedPhrases: ["brain's biochemistry", "persistent craving", "nutritional deficiencies", "immune deficiencies"]
         },
         {
-          text: "Getwele focuses on the biochemistry of the individual.",
-          highlightedPhrases: ["biochemistry"]
-        },
-        {
-          text: "Getwele prolongs the detox period to help you change your behavior and medically manage cravings.",
-          highlightedPhrases: ["prolongs the detox period", "medically manage cravings"]
+          text: "Persistent craving is the Hallmark of addiction, which drives relapse and hampers recovery. This craving leads to loss of control, compulsive use, and nutritional and immune deficiencies.",
+          highlightedPhrases: ["Persistent craving", "Hallmark of addiction", "drives relapse", "loss of control", "compulsive use"]
         }
       ]
     },
@@ -110,16 +126,12 @@ const Home: React.FC = () => {
       color: "#4CAF50",
       content: [
         {
-          text: "Instead of a few days detox, It's two weeks.",
-          highlightedPhrases: ["two weeks"]
+          text: "Getwele adds achieving biochemical balance to intervention time through replenishment of SUDI's lost micro and macro-nutrients which then replaces, replenishes, and repairs their brain cells.",
+          highlightedPhrases: ["biochemical balance", "replenishment", "replaces, replenishes, and repairs"]
         },
         {
-          text: "It's a long-term solution that helps you break the cycle of addiction.",
-          highlightedPhrases: ["long-term solution", "break the cycle"]
-        },
-        {
-          text: "Getwele further helps you change your behavior by medically managing cravings.",
-          highlightedPhrases: ["change your behavior", "medically manage cravings"]
+          text: "They are able to then function and develop proper decision making on seeking for illicit substances.",
+          highlightedPhrases: ["function", "proper decision making"]
         }
       ]
     }
@@ -157,6 +169,69 @@ const Home: React.FC = () => {
     return <span dangerouslySetInnerHTML={{ __html: result }} />;
   };
   
+  // Default research section data
+  const defaultResearchSection = {
+    title: "Factors Contributing to Craving and Relapse",
+    introText: "Researchers including those at NIDA have identified several factors contributing to craving and relapse which are:",
+    conclusionText: "These factors contribute to the perception that drug abuse is an intractable problem and those affected are difficult to treat.",
+    factors: [
+      {
+        title: "1. Recall of Previous Pleasure",
+        description: "The memory of past pleasurable experiences can trigger cravings and relapse, even when an individual is aware of the negative consequences. This cycle of recall, craving, and relapse depletes brain chemistry.",
+        color: "#4DA6FF"
+      },
+      {
+        title: "2. Nutritional Deficiency",
+        description: "Insufficient nutrient intake during active substance use is a major obstacle to recovery, yet it often receives inadequate attention. Substance abusers commonly experience deficits in essential micro and macro-nutrients. These deficiencies can hinder treatment adherence and increase the likelihood of relapse.",
+        color: "#4DA6FF"
+      },
+      {
+        title: "3. Proliferation of Metabolites",
+        description: "Drug breakdown products can remain active and induce craving, further contributing to the imbalance in brain chemistry and compulsive use.",
+        color: "#4DA6FF"
+      },
+      {
+        title: "4. Free Radicals and Toxins",
+        description: "Drug breakdown generates free radicals, toxins, and inadequate antioxidants, which can cause hangovers and unwell feelings.",
+        color: "#4DA6FF"
+      }
+    ]
+  };
+
+  // Default ASSAM levels section data
+  const defaultAssamLevelsSection = {
+    title: "How Getwele Works",
+    introText: "Intervention time is prolonged through our focus on recovery.",
+    subIntroText: "Recovery is needed in each intervention process i.e during detoxification, Intensive Counseling, Aftercare and which should be incorporated in all American Society of Addiction Medicine's levels of care listed below:",
+    levels: [
+      {
+        levelName: "Level 0.5: Early Intervention Services",
+        description: "This level focuses on preventing the progression of substance use disorders and involves early intervention, such as motivational interviewing and brief interventions.",
+        color: "#4CAF50"
+      },
+      {
+        levelName: "Level 1: Outpatient Services",
+        description: "Outpatient services involve less frequent and intensive treatment, typically focusing on education, counseling, and support groups.",
+        color: "#4CAF50"
+      },
+      {
+        levelName: "Level 2: Intensive Outpatient/Partial Hospitalization Services",
+        description: "This level provides more intensive outpatient care, including structured programming and therapy, with a focus on addressing co-occurring mental health conditions.",
+        color: "#4CAF50"
+      },
+      {
+        levelName: "Level 3: Residential/Inpatient Services",
+        description: "This level involves residential treatment, where individuals reside at the facility and receive intensive care, including medical monitoring and therapy.",
+        color: "#4CAF50"
+      },
+      {
+        levelName: "Level 4: Medically Managed Intensive Inpatient Services",
+        description: "This is the highest level of care, designed for individuals with severe medical or psychiatric conditions, such as acute withdrawal or detoxification.",
+        color: "#4CAF50"
+      }
+    ]
+  };
+
   if (loading) {
     return (
       <PageLayout>
@@ -231,18 +306,24 @@ const Home: React.FC = () => {
                 </>
               )}
             </h3>
-            <Link to={pageData?.heroSection.buttonLink || "/products"} style={{
-              display: 'inline-block',
-              backgroundColor: '#77C4BD',
-              color: 'white',
-              textDecoration: 'none',
-              padding: '15px 30px',
-              borderRadius: '30px',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              marginTop: '20px',
-              marginBottom: '20px'
-            }}>
+            <Link 
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
+              }} 
+              to="#cards-section" 
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#77C4BD',
+                color: 'white',
+                textDecoration: 'none',
+                padding: '15px 30px',
+                borderRadius: '30px',
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                marginTop: '20px',
+                marginBottom: '20px'
+              }}>
               {pageData?.heroSection.buttonText || "START YOUR JOURNEY"} &nbsp;<span className="material-icons" style={{ verticalAlign: 'middle', fontSize: '1.4rem' }}>chevron_right</span>
             </Link>
           </div>
@@ -268,7 +349,7 @@ const Home: React.FC = () => {
 
         <LogoSection />
 
-        <div style={{ 
+        <div id="cards-section" style={{ 
           backgroundColor: '#0f0f0f', 
           padding: '80px 20px',
           display: 'flex',
@@ -329,6 +410,86 @@ const Home: React.FC = () => {
               ))}
             </div>
           ))}
+        </div>
+
+        {/* Research and Factors Section */}
+        <div style={{ 
+          backgroundColor: '#f5f5f5', 
+          padding: '80px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
+          <div style={{ maxWidth: '1200px', width: '100%' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              textAlign: 'center', 
+              marginBottom: '40px',
+              color: '#0f4935'
+            }}>
+              {pageData?.researchSection?.title || defaultResearchSection.title}
+            </h2>
+            <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.2rem', color: '#333' }}>
+              {pageData?.researchSection?.introText || defaultResearchSection.introText}
+            </p>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gap: '30px',
+              marginBottom: '60px'
+            }}>
+              {(pageData?.researchSection?.factors || defaultResearchSection.factors).map((factor, index) => (
+                <div key={index} style={{ 
+                  backgroundColor: 'white', 
+                  padding: '30px', 
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                }}>
+                  <h3 style={{ color: factor.color || "#4DA6FF", marginBottom: '15px' }}>{factor.title}</h3>
+                  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#444' }}>
+                    {factor.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+            
+            <p style={{ textAlign: 'center', marginBottom: '60px', fontSize: '1.1rem', color: '#333', fontStyle: 'italic' }}>
+              {pageData?.researchSection?.conclusionText || defaultResearchSection.conclusionText}
+            </p>
+
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              textAlign: 'center', 
+              marginBottom: '40px',
+              color: '#0f4935'
+            }}>
+              {pageData?.assamLevelsSection?.title || defaultAssamLevelsSection.title}
+            </h2>
+            
+            <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.2rem', color: '#333' }}>
+              {pageData?.assamLevelsSection?.introText || defaultAssamLevelsSection.introText}
+            </p>
+            
+            <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.1rem', color: '#333' }}>
+              {pageData?.assamLevelsSection?.subIntroText || defaultAssamLevelsSection.subIntroText}
+            </p>
+
+            {(pageData?.assamLevelsSection?.levels || defaultAssamLevelsSection.levels).map((level, index) => (
+              <div key={index} style={{ 
+                backgroundColor: 'white', 
+                padding: '30px', 
+                borderRadius: '10px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                marginBottom: index !== (pageData?.assamLevelsSection?.levels || defaultAssamLevelsSection.levels).length - 1 ? '20px' : '0'
+              }}>
+                <h3 style={{ color: level.color || "#4CAF50", marginBottom: '15px' }}>{level.levelName}</h3>
+                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#444' }}>
+                  {level.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Modal */}

@@ -32,6 +32,26 @@ export async function getHomePage() {
           highlightedPhrases
         }
       },
+      researchSection {
+        title,
+        introText,
+        conclusionText,
+        factors[] {
+          title,
+          description,
+          color
+        }
+      },
+      assamLevelsSection {
+        title,
+        introText,
+        subIntroText,
+        levels[] {
+          levelName,
+          description,
+          color
+        }
+      },
       seo
     }
   `);

@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Getwele - Nutritional Support for Substance Use Recovery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Getwele is a specialized platform focused on providing nutritional support solutions for individuals recovering from substance use disorders (SUDs). Our patented protocols address the biochemical imbalances that occur during substance use, supporting more effective recovery by replenishing essential micro and macro-nutrients.
 
-## Available Scripts
+## About Getwele
 
-In the project directory, you can run:
+Getwele is an offshoot of Awele Foundation International (AFI), Inc., a non-profit organization dedicated to developing Complementary & Alternative Therapies for Alcohol/Drug Abuse. Through years of research and development, we've created proprietary nutritional formulations designed to support recovery from various substance use disorders.
 
-### `npm start`
+## Our Products
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **SMAASH-C**: Nutritional support for individuals recovering from stimulant use (cocaine, nicotine, marijuana)
+- **SMAASH-A**: Specifically formulated for individuals recovering from alcohol dependency
+- **SMAASH-H**: Designed to support recovery from opiate dependency
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Key Features
 
-### `npm test`
+- Science-based nutritional formulations
+- Integration with recognized recovery frameworks (ASAM levels of care)
+- Focus on biochemical balance and nutrient replenishment
+- Research-backed approach to reducing cravings and supporting abstinence
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology Stack
 
-### `npm run build`
+This project is built using:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React 19
+- TypeScript
+- React Router DOM
+- Sanity CMS for content management
+- Tailwind CSS for styling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js 18+ and npm
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
+   ```
+   git clone https://github.com/bud-123/getwele-v2.git
+   cd getwele-v2
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Configure environment variables:
+   Create a `.env` file in the root directory with your Sanity configuration:
+   ```
+   REACT_APP_SANITY_PROJECT_ID=your-project-id
+   REACT_APP_SANITY_DATASET=production
+   REACT_APP_SANITY_API_VERSION=v2021-10-21
+   REACT_APP_SANITY_TOKEN=your-token
+   ```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Start the development server:
+   ```
+   npm start
+   ```
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This site is deployed using GitHub Pages. To deploy:
