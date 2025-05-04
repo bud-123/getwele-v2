@@ -1,15 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageLayout from "../Layouts/PageLayout";
 import LogoSection from "../components/LogoSection";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { getHomePage } from "../lib/sanityClient";
 
-// Card content type definition
+// Define proper types for your data
+interface CardParagraph {
+  text: string;
+  highlightedPhrases: string[];
+}
+
 interface CardContent {
   title: string;
   icon: string;
   color: string;
-  content: React.ReactNode;
+  content: CardParagraph[];
+}
+
+interface HomePageData {
+  heroSection: {
+    title: string[];
+    subtitle: string[];
+    buttonText: string;
+    buttonLink: string;
+    heroImage?: {
+      asset: {
+        _id: string;
+        url: string;
+      };
+    };
+  };
+  cards: CardContent[];
+  seo?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
 }
 
 const Home: React.FC = () => {
@@ -17,46 +44,89 @@ const Home: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<CardContent | null>(null);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
+  
+  // Properly type your state
+  const [pageData, setPageData] = useState<HomePageData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Card data
-  const cardData: CardContent[] = [
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getHomePage();
+        setPageData(data);
+      } catch (error) {
+        console.error("Error fetching home page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  // Default card data with proper typing
+  const defaultCardData: CardContent[] = [
     {
       title: "How Can We Make Current Recovery More Effective?",
       icon: "error_outline",
       color: "#FF6B6B",
-      content: (
-        <>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>When we're addicted, our behaviors <strong>prolong decision-making</strong>.</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Existing services often focus on a short period of time (3 days in many cases).</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>It's <strong>not long enough</strong> to change our behavior.</p>
-        </>
-      )
+      content: [
+        {
+          text: "When we're addicted, our behaviors prolong decision-making.",
+          highlightedPhrases: ["prolong decision-making"]
+        },
+        {
+          text: "Existing services often focus on a short period of time (3 days in many cases).",
+          highlightedPhrases: []
+        },
+        {
+          text: "It's not long enough to change our behavior.",
+          highlightedPhrases: ["not long enough"]
+        }
+      ]
     },
     {
       title: "The Science of Getwele's Patented Protocol",
       icon: "science",
       color: "#4DA6FF",
-      content: (
-        <>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>When experiencing the desire to seek alcohol and other elicit substances, our <strong>brain's biochemistry</strong> is altered.</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Getwele focuses on the <strong>biochemistry of the individual</strong>.</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Getwele <strong>prolongs the detox period</strong> to help you change your behavior and <strong>medically manage cravings</strong>.</p>
-        </>
-      )
+      content: [
+        {
+          text: "When experiencing the desire to seek alcohol and other elicit substances, our brain's biochemistry is altered.",
+          highlightedPhrases: ["brain's biochemistry"]
+        },
+        {
+          text: "Getwele focuses on the biochemistry of the individual.",
+          highlightedPhrases: ["biochemistry"]
+        },
+        {
+          text: "Getwele prolongs the detox period to help you change your behavior and medically manage cravings.",
+          highlightedPhrases: ["prolongs the detox period", "medically manage cravings"]
+        }
+      ]
     },
     {
       title: "How Getwele Works",
       icon: "event_available",
       color: "#4CAF50",
-      content: (
-        <>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Instead of a few days detox, It's <strong>two weeks</strong>.</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>It's a <strong>long-term solution</strong> that helps you <strong>break the cycle</strong> of addiction.</p>
-          <p style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>Getwele further helps you <strong>change your behavior</strong> by <strong>medically managing cravings</strong>.</p>
-        </>
-      )
+      content: [
+        {
+          text: "Instead of a few days detox, It's two weeks.",
+          highlightedPhrases: ["two weeks"]
+        },
+        {
+          text: "It's a long-term solution that helps you break the cycle of addiction.",
+          highlightedPhrases: ["long-term solution", "break the cycle"]
+        },
+        {
+          text: "Getwele further helps you change your behavior by medically managing cravings.",
+          highlightedPhrases: ["change your behavior", "medically manage cravings"]
+        }
+      ]
     }
   ];
+
+  // Use pageData if available, otherwise fall back to defaultCardData
+  const cardData = pageData?.cards || defaultCardData;
 
   // Handler for card click
   const handleCardClick = (card: CardContent) => {
@@ -69,6 +139,38 @@ const Home: React.FC = () => {
     setModalOpen(false);
     setActiveCard(null);
   };
+  
+  // Helper function to render text with highlighted phrases
+  const renderHighlightedText = (text: string, highlightedPhrases: string[] = []) => {
+    if (!highlightedPhrases || highlightedPhrases.length === 0) {
+      return text;
+    }
+
+    let result = text;
+    highlightedPhrases.forEach(phrase => {
+      result = result.replace(
+        new RegExp(`(${phrase})`, 'gi'),
+        '<strong>$1</strong>'
+      );
+    });
+
+    return <span dangerouslySetInnerHTML={{ __html: result }} />;
+  };
+  
+  if (loading) {
+    return (
+      <PageLayout>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh' 
+        }}>
+          Loading...
+        </div>
+      </PageLayout>
+    );
+  }
   
   return (
     <PageLayout>
@@ -96,20 +198,40 @@ const Home: React.FC = () => {
               margin: '0',
               lineHeight: '1.1'
             }}>
-              Smash<br />
-              Your<br />
-              Drug<br />
-              Seeking
+              {pageData?.heroSection.title ? (
+                pageData.heroSection.title.map((line: string, i: number) => (
+                  <React.Fragment key={i}>
+                    {line}<br />
+                  </React.Fragment>
+                ))
+              ) : (
+                <>
+                  Smash<br />
+                  Your<br />
+                  Drug<br />
+                  Seeking
+                </>
+              )}
             </h1>
             <h3 style={{
               fontWeight: 'normal',
               fontSize: isMobile ? '1.5rem' : '2rem',
               margin: '20px 0'
             }}>
-              Less desire.<br />
-              Less seeking.
+              {pageData?.heroSection.subtitle ? (
+                pageData.heroSection.subtitle.map((line: string, i: number) => (
+                  <React.Fragment key={i}>
+                    {line}<br />
+                  </React.Fragment>
+                ))
+              ) : (
+                <>
+                  Less desire.<br />
+                  Less seeking.
+                </>
+              )}
             </h3>
-            <Link to="/products" style={{
+            <Link to={pageData?.heroSection.buttonLink || "/products"} style={{
               display: 'inline-block',
               backgroundColor: '#77C4BD',
               color: 'white',
@@ -121,7 +243,7 @@ const Home: React.FC = () => {
               marginTop: '20px',
               marginBottom: '20px'
             }}>
-              START YOUR JOURNEY &nbsp;<span className="material-icons" style={{ verticalAlign: 'middle', fontSize: '1.4rem' }}>chevron_right</span>
+              {pageData?.heroSection.buttonText || "START YOUR JOURNEY"} &nbsp;<span className="material-icons" style={{ verticalAlign: 'middle', fontSize: '1.4rem' }}>chevron_right</span>
             </Link>
           </div>
           <div className="hero-image" style={{
@@ -132,7 +254,7 @@ const Home: React.FC = () => {
             width: isMobile ? '100%' : 'auto'
           }}>
             <img 
-              src={require("../Assets/Images/getwele-hero-im.png")} 
+              src={pageData?.heroSection.heroImage?.asset.url || require("../Assets/Images/getwele-hero-im.png")} 
               alt="Smaash Products"
               style={{
                 height: 'auto',
@@ -155,7 +277,7 @@ const Home: React.FC = () => {
           alignItems: 'center',
           gap: '30px'
         }}>
-          {cardData.map((card, index) => (
+          {cardData.map((card: CardContent, index: number) => (
             <div 
               key={index}
               onClick={() => handleCardClick(card)}
@@ -200,7 +322,11 @@ const Home: React.FC = () => {
               }}>
                 <span className="material-icons" style={{ fontSize: '40px', color: card.color }}>{card.icon}</span>
               </div>
-              {card.content}
+              {card.content.map((paragraph: CardParagraph, idx: number) => (
+                <p key={idx} style={{ color: '#444', lineHeight: '1.5', textAlign: 'left' }}>
+                  {renderHighlightedText(paragraph.text, paragraph.highlightedPhrases)}
+                </p>
+              ))}
             </div>
           ))}
         </div>
@@ -252,43 +378,24 @@ const Home: React.FC = () => {
               >
                 <span className="material-icons">close</span>
               </button>
-              
-              <div style={{ 
-                height: '4px', 
-                background: activeCard.color, 
-                position: 'absolute', 
-                top: 0, 
-                left: 0, 
-                right: 0,
-                borderTopLeftRadius: '10px',
-                borderTopRightRadius: '10px'
-              }}></div>
-              
-              <div style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                backgroundColor: `rgba(${parseInt(activeCard.color.slice(1, 3), 16)}, ${parseInt(activeCard.color.slice(3, 5), 16)}, ${parseInt(activeCard.color.slice(5, 7), 16)}, 0.1)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 30px'
-              }}>
-                <span className="material-icons" style={{ fontSize: '50px', color: activeCard.color }}>{activeCard.icon}</span>
-              </div>
-              
               <h2 style={{ 
-                color: '#222', 
-                fontSize: '2rem', 
-                marginBottom: '25px', 
-                fontWeight: '600',
-                textAlign: 'center'
+                color: '#333', 
+                marginBottom: '20px',
+                fontSize: '2rem'
               }}>
                 {activeCard.title}
               </h2>
-              
-              <div style={{ fontSize: '1.1rem' }}>
-                {activeCard.content}
+              <div style={{ marginTop: '30px' }}>
+                {activeCard.content.map((paragraph: CardParagraph, idx: number) => (
+                  <p key={idx} style={{ 
+                    color: '#444', 
+                    fontSize: '1.1rem',
+                    lineHeight: '1.6',
+                    marginBottom: '15px'
+                  }}>
+                    {renderHighlightedText(paragraph.text, paragraph.highlightedPhrases)}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

@@ -1,6 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from "../Layouts/PageLayout";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { getAboutPage } from "../lib/sanityClient";
+
+// Simple types for Sanity data
+interface SanityImage {
+  asset?: {
+    _id?: string;
+    url?: string;
+  }
+}
+
+interface AboutPageData {
+  pageTitle?: string;
+  introText?: string;
+  heroSection?: {
+    heading?: string;
+    subheading?: string;
+    heroImage?: SanityImage;
+  };
+  missionStatement?: {
+    heading?: string;
+    content?: string;
+    image?: SanityImage;
+  };
+  visionStatement?: {
+    heading?: string;
+    content?: string;
+    image?: SanityImage;
+  };
+  studies?: {
+    heading?: string;
+    content?: string;
+    image?: SanityImage;
+  };
+}
 
 const About = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -14,6 +48,9 @@ const About = () => {
   ];
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [fade, setFade] = React.useState(true);
+
+  // Sanity data state
+  const [aboutData, setAboutData] = useState<AboutPageData | null>(null);
 
   // Auto-scroll effect
   React.useEffect(() => {
@@ -42,6 +79,20 @@ const About = () => {
       setFade(true);
     }, 400);
   };
+
+  // Fetch data from Sanity
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAboutPage();
+        setAboutData(data);
+      } catch (error) {
+        console.error("Error fetching about page data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <PageLayout>
@@ -94,7 +145,7 @@ const About = () => {
               letterSpacing: '2px',
               padding: '0 20px'
             }}>
-              WHO WE ARE
+              {aboutData?.heroSection?.heading || "WHO WE ARE"}
             </h1>
           </div>
           {/* Chevron Buttons */}
@@ -162,13 +213,13 @@ const About = () => {
               color: '#2c3e50',
               textAlign: 'left'
             }}>
-              Getwele is an offshoot of Awele Foundation International (AFI), Inc., a Non-Profit organization which worked for many years to develop Complementary & Alternative Therapies for Alcohol/Drug Abuse through its sister clinic, Awele Treatment & Rehab Clinic, Inc.
+              {aboutData?.introText || `Getwele is an offshoot of Awele Foundation International (AFI), Inc., a Non-Profit organization which worked for many years to develop Complementary & Alternative Therapies for Alcohol/Drug Abuse through its sister clinic, Awele Treatment & Rehab Clinic, Inc.
               <br />
               <br />
               Through AFI's Executive Director, 3 different formulations were developed for each category of stimulants, opiates, downers, and hallucinogens.  All products are in the commercialization stage as Nutraceuticals.  They will be used for nutritional support to lessen the desire for alcohol/drug and their seeking behavior. 
               <br />
               <br />
-              The result is that Alcohol/Drug abusers can stay abstinent, improve their nutritional status and general well-being. AFI has done studies in different countries – pilot observational study (Awele Clinic in the US), animal studies (UWIMONA University Jamaica), case studies (Federal Neuro-Psychiatric Hospital, Nigeria) and currently a preliminary study at University of Virginia (UVA) School of Medicine, Animal Division, USA.
+              The result is that Alcohol/Drug abusers can stay abstinent, improve their nutritional status and general well-being. AFI has done studies in different countries – pilot observational study (Awele Clinic in the US), animal studies (UWIMONA University Jamaica), case studies (Federal Neuro-Psychiatric Hospital, Nigeria) and currently a preliminary study at University of Virginia (UVA) School of Medicine, Animal Division, USA.`}
             </p>
           </div>
             
@@ -194,7 +245,7 @@ const About = () => {
               marginBottom: isMobile ? '20px' : 0
             }}>
               <img 
-                src={require("../Assets/Images/about-mission-image.jpg")} 
+                src={aboutData?.missionStatement?.image?.asset?.url || require("../Assets/Images/about-mission-image.jpg")} 
                 alt="Our Mission" 
                 style={{
                   width: '100%',
@@ -221,12 +272,12 @@ const About = () => {
                 borderBottom: '2px solid #72b046',
                 paddingBottom: '10px',
                 color: '#2c3e50'
-              }}>Our Mission</h2>
+              }}>{aboutData?.missionStatement?.heading || "Our Mission"}</h2>
               <p style={{ 
                 fontSize: isMobile ? '1rem' : '1.1rem', 
                 lineHeight: '1.6',
                 color: '#555'
-              }}>To become a leading company that provides high-quality products that will give comfort and stability to its customers. To be a company that helps its customers move to Health and General Wellness.</p>
+              }}>{aboutData?.missionStatement?.content || "To become a leading company that provides high-quality products that will give comfort and stability to its customers. To be a company that helps its customers move to Health and General Wellness."}</p>
             </div>
           </div>
           
@@ -254,7 +305,7 @@ const About = () => {
               order: isMobile ? 1 : 2
             }}>
               <img 
-                src={require("../Assets/Images/about-vision-image.jpg")} 
+                src={aboutData?.visionStatement?.image?.asset?.url || require("../Assets/Images/about-vision-image.jpg")} 
                 alt="Our Vision" 
                 style={{
                   width: '100%',
@@ -282,12 +333,12 @@ const About = () => {
                 borderBottom: '2px solid #72b046',
                 paddingBottom: '10px',
                 color: '#2c3e50'
-              }}>Our Vision</h2>
+              }}>{aboutData?.visionStatement?.heading || "Our Vision"}</h2>
               <p style={{ 
                 fontSize: isMobile ? '1rem' : '1.1rem', 
                 lineHeight: '1.6',
                 color: '#555'
-              }}>Our goal is to show that a dietary supplement protocol (The Awele Protocol) of adjunct nutritional support and nutritional management is an evidence-based practice that can provide an efficacious and cost-effective approach to management of nutritional deficiencies associated with chronic drug and alcohol abuse.</p>
+              }}>{aboutData?.visionStatement?.content || "Our goal is to show that a dietary supplement protocol (The Awele Protocol) of adjunct nutritional support and nutritional management is an evidence-based practice that can provide an efficacious and cost-effective approach to management of nutritional deficiencies associated with chronic drug and alcohol abuse."}</p>
             </div>
           </div>
           
@@ -313,7 +364,7 @@ const About = () => {
               marginBottom: isMobile ? '20px' : 0
             }}>
               <img 
-                src={require("../Assets/Images/about-studies-image.jpg")} 
+                src={aboutData?.studies?.image?.asset?.url || require("../Assets/Images/about-studies-image.jpg")} 
                 alt="Our Studies" 
                 style={{
                   width: '100%',
@@ -340,19 +391,19 @@ const About = () => {
                 borderBottom: '2px solid #72b046',
                 paddingBottom: '10px',
                 color: '#2c3e50'
-              }}>Our Studies</h2>
+              }}>{aboutData?.studies?.heading || "Our Studies"}</h2>
               <p style={{ 
                 fontSize: isMobile ? '1rem' : '1.1rem', 
                 lineHeight: '1.6',
                 color: '#555'
-              }}>Our studies have shown similar findings to others in the literature that show that there is a relationship between biochemical depletions and nutritional deficiencies and heightened drug desire/seeking behavior.</p>
+              }}>{aboutData?.studies?.content || "Our studies have shown similar findings to others in the literature that show that there is a relationship between biochemical depletions and nutritional deficiencies and heightened drug desire/seeking behavior."}</p>
               
               <div style={{
                 marginTop: '30px',
                 display: 'flex',
                 justifyContent: 'center'
               }}>
-                <a href="/research" style={{
+                <a href="/research#/research" style={{
                   display: 'inline-block',
                   padding: '12px 20px',
                   border: '2px solid #72b046',

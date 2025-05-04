@@ -1,9 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from '../Layouts/PageLayout';
 import useMediaQuery from '../hooks/useMediaQuery';
+import { getContactPage } from '../lib/sanityClient';
+
+// Define types for Sanity data
+interface SanityImage {
+  asset?: {
+    _id?: string;
+    url?: string;
+  }
+}
+
+interface ContactPageData {
+  pageTitle?: string;
+  pageSubtitle?: string;
+  contactInfo?: {
+    email?: string;
+    phone?: string;
+    address?: {
+      companyName?: string;
+      street?: string;
+      city?: string;
+      roomNumber?: string;
+    }
+  };
+  businessHours?: {
+    weekdays?: string;
+    weekend?: string;
+    urgentInquiries?: string;
+  };
+  contactForm?: {
+    heading?: string;
+    buttonText?: string;
+  };
+  profileImage?: SanityImage;
+}
 
 const Contact: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  
+  // Sanity data state
+  const [pageData, setPageData] = useState<ContactPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  
+  // Fetch data from Sanity
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getContactPage();
+        setPageData(data);
+      } catch (error) {
+        console.error("Error fetching contact page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+  if (loading) {
+    return (
+      <PageLayout>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh' 
+        }}>
+          Loading...
+        </div>
+      </PageLayout>
+    );
+  }
   
   return (
     <PageLayout>
@@ -27,7 +96,7 @@ const Contact: React.FC = () => {
             textAlign: 'center',
             padding: '0 10px'
           }}>
-            CONTACT DR. SALAKO-AKANDE
+            {pageData?.pageTitle || "CONTACT DR. SALAKO-AKANDE"}
           </h1>
           <p style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
@@ -35,7 +104,7 @@ const Contact: React.FC = () => {
             color: '#3a506b',
             textAlign: 'center'
           }}>
-            GET IN TOUCH WITH US
+            {pageData?.pageSubtitle || "GET IN TOUCH WITH US"}
           </p>
           
           <div style={{
@@ -55,7 +124,7 @@ const Contact: React.FC = () => {
               minWidth: isMobile ? '100%' : '250px'
             }}>
               <img 
-                src={require("../Assets/Images/research-profile-image.jpeg")} 
+                src={pageData?.profileImage?.asset?.url || require("../Assets/Images/research-profile-image.jpeg")} 
                 alt="Dr. Ajibike Salako-Akande" 
                 style={{
                   width: '100%',
@@ -84,7 +153,7 @@ const Contact: React.FC = () => {
               <p style={{ marginBottom: '15px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
                 <strong>Email:</strong>{' '}
                 <a 
-                  href="mailto:getwele@gmail.com" 
+                  href={`mailto:${pageData?.contactInfo?.email || "getwele@gmail.com"}`} 
                   style={{ 
                     color: 'white', 
                     textDecoration: 'underline',
@@ -93,13 +162,13 @@ const Contact: React.FC = () => {
                   onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}
                   onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  getwele@gmail.com
+                  {pageData?.contactInfo?.email || "getwele@gmail.com"}
                 </a>
               </p>
               <p style={{ marginBottom: '15px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
                 <strong>Phone:</strong>{' '}
                 <a 
-                  href="tel:4432407051" 
+                  href={`tel:${pageData?.contactInfo?.phone?.replace(/\D/g, '') || "4432407051"}`} 
                   style={{ 
                     color: 'white', 
                     textDecoration: 'underline',
@@ -108,7 +177,7 @@ const Contact: React.FC = () => {
                   onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}
                   onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  443-240-7051
+                  {pageData?.contactInfo?.phone || "443-240-7051"}
                 </a>
               </p>
               <div style={{ marginBottom: '15px' }}>
@@ -116,16 +185,16 @@ const Contact: React.FC = () => {
                   <strong>Address:</strong>
                 </p>
                 <p style={{ marginBottom: '5px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
-                  bwtech@UMBC South
+                  {pageData?.contactInfo?.address?.companyName || "bwtech@UMBC South"}
                 </p>
                 <p style={{ marginBottom: '5px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
-                  1450 S Rolling Rd
+                  {pageData?.contactInfo?.address?.street || "1450 S Rolling Rd"}
                 </p>
                 <p style={{ marginBottom: '5px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
-                  Halethorpe, MD 21227
+                  {pageData?.contactInfo?.address?.city || "Halethorpe, MD 21227"}
                 </p>
                 <p style={{ marginBottom: '5px', fontSize: isMobile ? '1rem' : '1.1rem' }}>
-                  Room: 2021
+                  Room: {pageData?.contactInfo?.address?.roomNumber || "2021"}
                 </p>
               </div>
             </div>
@@ -151,7 +220,7 @@ const Contact: React.FC = () => {
                 backgroundColor: 'rgba(255,255,255,0.15)',
                 borderRadius: '6px'
               }}>
-                <strong>Monday - Friday:</strong> 9:00 AM - 5:00 PM
+                <strong>Monday - Friday:</strong> {pageData?.businessHours?.weekdays || "9:00 AM - 5:00 PM"}
               </p>
               <p style={{ 
                 marginBottom: '15px',
@@ -160,15 +229,15 @@ const Contact: React.FC = () => {
                 backgroundColor: 'rgba(255,255,255,0.15)',
                 borderRadius: '6px'
               }}>
-                <strong>Saturday - Sunday:</strong> Closed
+                <strong>Saturday - Sunday:</strong> {pageData?.businessHours?.weekend || "Closed"}
               </p>
               <p style={{ 
                 marginTop: '25px',
                 fontSize: isMobile ? '1rem' : '1.1rem'
               }}>
-                For urgent inquiries, please email us directly at{' '}
+                {pageData?.businessHours?.urgentInquiries || "For urgent inquiries, please email us directly at"}{' '}
                 <a 
-                  href="mailto:getwele@gmail.com" 
+                  href={`mailto:${pageData?.contactInfo?.email || "getwele@gmail.com"}`}
                   style={{ 
                     color: 'white', 
                     textDecoration: 'underline',
@@ -177,7 +246,7 @@ const Contact: React.FC = () => {
                   onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}
                   onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                 >
-                  getwele@gmail.com
+                  {pageData?.contactInfo?.email || "getwele@gmail.com"}
                 </a>
               </p>
             </div>
@@ -198,7 +267,7 @@ const Contact: React.FC = () => {
               color: '#2c3e50',
               textAlign: 'center'
             }}>
-              SEND A MESSAGE TO DR. SALAKO-AKANDE
+              {pageData?.contactForm?.heading || "SEND A MESSAGE TO DR. SALAKO-AKANDE"}
             </h2>
             
             <div style={{
@@ -318,7 +387,7 @@ const Contact: React.FC = () => {
                   const message = document.getElementById('message') as HTMLTextAreaElement;
                   
                   if (email && name && message && email.value && name.value && message.value) {
-                    const mailtoLink = `mailto:getwele@gmail.com?subject=${encodeURIComponent(subject?.value || 'Message for Dr. Salako-Akande')}&body=${encodeURIComponent(`Name: ${name.value}\n\n${message.value}`)}`;
+                    const mailtoLink = `mailto:${pageData?.contactInfo?.email || "getwele@gmail.com"}?subject=${encodeURIComponent(subject?.value || 'Message for Dr. Salako-Akande')}&body=${encodeURIComponent(`Name: ${name.value}\n\n${message.value}`)}`;
                     window.location.href = mailtoLink;
                   } else {
                     alert('Please fill in all required fields.');
@@ -340,7 +409,7 @@ const Contact: React.FC = () => {
                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#5e9737'}
                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#72b046'}
               >
-                Send Message
+                {pageData?.contactForm?.buttonText || "Send Message"}
               </button>
             </div>
           </div>

@@ -1,9 +1,93 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from "../Layouts/PageLayout";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { getResearchPage } from "../lib/sanityClient";
+
+// Define types for Sanity data
+interface SanityImage {
+  asset?: {
+    _id?: string;
+    url?: string;
+  }
+}
+
+interface ResearchArea {
+  title: string;
+  description: string;
+  image?: SanityImage;
+}
+
+interface Publication {
+  title: string;
+  authors: string;
+  publicationDate?: string;
+  journal?: string;
+  abstract?: string;
+  link?: string;
+  thumbnail?: SanityImage;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio?: string;
+  image?: SanityImage;
+  researchInterests?: string[];
+}
+
+interface ResearchPageData {
+  pageTitle?: string;
+  heroSection?: {
+    heading?: string;
+    subheading?: string;
+    heroImage?: SanityImage;
+  };
+  introductionSection?: {
+    heading?: string;
+    content?: any[];
+  };
+  researchAreas?: ResearchArea[];
+  publications?: Publication[];
+  researchTeam?: TeamMember[];
+}
 
 const Research = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  
+  // Sanity data state
+  const [pageData, setPageData] = useState<ResearchPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  
+  // Fetch data from Sanity
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getResearchPage();
+        setPageData(data);
+      } catch (error) {
+        console.error("Error fetching research page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+  if (loading) {
+    return (
+      <PageLayout>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh' 
+        }}>
+          Loading...
+        </div>
+      </PageLayout>
+    );
+  }
   
   return (
     <PageLayout>
@@ -27,7 +111,7 @@ const Research = () => {
             textAlign: 'center',
             padding: '0 10px'
           }}>
-            AJIBIKE SALAKO-AKANDE MD
+            {pageData?.heroSection?.heading || "AJIBIKE SALAKO-AKANDE MD"}
           </h1>
           <p style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
@@ -35,7 +119,7 @@ const Research = () => {
             color: '#3a506b',
             textAlign: 'center'
           }}>
-            PHYSICIAN | RESEARCHER | DRUG ABUSE SPECIALIST
+            {pageData?.heroSection?.subheading || "PHYSICIAN | RESEARCHER | DRUG ABUSE SPECIALIST"}
           </p>
           
           <div style={{
@@ -56,8 +140,8 @@ const Research = () => {
               minWidth: isMobile ? '100%' : '250px'
             }}>
               <img 
-                src={require("../Assets/Images/research-profile-image.jpeg")} 
-                alt="Dr. Ajibike Salako-Akande" 
+                src={pageData?.researchTeam?.[0]?.image?.asset?.url || require("../Assets/Images/research-profile-image.jpeg")} 
+                alt={pageData?.researchTeam?.[0]?.name || "Dr. Ajibike Salako-Akande"} 
                 style={{
                   width: '100%',
                   height: isMobile ? '250px' : '300px',
@@ -109,26 +193,43 @@ const Research = () => {
               }}>
                 AREAS OF RESEARCH
               </h3>
-              <p style={{ 
-                marginBottom: '15px',
-                fontSize: isMobile ? '1rem' : '1.1rem',
-                padding: '8px 12px',
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                borderRadius: '6px',
-                transition: 'all 0.3s ease'
-              }}>
-                Nutritional Neuroscience
-              </p>
-              <p style={{ 
-                marginBottom: '15px',
-                fontSize: isMobile ? '1rem' : '1.1rem',
-                padding: '8px 12px',
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                borderRadius: '6px',
-                transition: 'all 0.3s ease'
-              }}>
-                Addiction Research
-              </p>
+              {pageData?.researchAreas ? (
+                pageData.researchAreas.map((area, index) => (
+                  <p key={index} style={{ 
+                    marginBottom: '15px',
+                    fontSize: isMobile ? '1rem' : '1.1rem',
+                    padding: '8px 12px',
+                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    borderRadius: '6px',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    {area.title}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p style={{ 
+                    marginBottom: '15px',
+                    fontSize: isMobile ? '1rem' : '1.1rem',
+                    padding: '8px 12px',
+                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    borderRadius: '6px',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    Nutritional Neuroscience
+                  </p>
+                  <p style={{ 
+                    marginBottom: '15px',
+                    fontSize: isMobile ? '1rem' : '1.1rem',
+                    padding: '8px 12px',
+                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    borderRadius: '6px',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    Addiction Research
+                  </p>
+                </>
+              )}
             </div>
           </div>
           
@@ -276,65 +377,99 @@ const Research = () => {
               flexDirection: 'column',
               gap: isMobile ? '20px' : '30px'
             }}>
-              <div style={{
-                padding: isMobile ? '15px' : '20px',
-                borderLeft: '4px solid #72b046',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '0 8px 8px 0'
-              }}>
-                <p style={{ 
-                  fontWeight: '500', 
-                  marginBottom: '10px',
-                  fontSize: isMobile ? '0.95rem' : 'inherit' 
-                }}>
-                  Towers EB, Williams IL, Aristidou ASK, <strong style={{ color: '#72b046' }}>et al. (includes Salako-Akande A)</strong>. Impact of SMAASH-C, a novel nutritional supplement, on drug-seeking and toxicity in female and male rats. Transl Psychiatry. 2024;14.
-                </p>
-              </div>
-              
-              <div style={{
-                padding: isMobile ? '15px' : '20px',
-                borderLeft: '4px solid #72b046',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '0 8px 8px 0'
-              }}>
-                <p style={{ 
-                  fontWeight: '500', 
-                  marginBottom: '10px',
-                  fontSize: isMobile ? '0.95rem' : 'inherit' 
-                }}>
-                  Young L, Webber-Waugh A, Thaxter K. Drug-seeking behavior is significantly attenuated in nutritionally supplemented cocaine withdrawn Sprague-Dawley rats. J Behav Brain Sci. 2021;11(7).
-                </p>
-              </div>
-              
-              <div style={{
-                padding: isMobile ? '15px' : '20px',
-                borderLeft: '4px solid #72b046',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '0 8px 8px 0'
-              }}>
-                <p style={{ 
-                  fontWeight: '500', 
-                  marginBottom: '10px',
-                  fontSize: isMobile ? '0.95rem' : 'inherit' 
-                }}>
-                  Webber-Waugh A, Thaxter Nesbeth K, Anderson-Johnson P, <strong style={{ color: '#72b046' }}>Salako-Akande A</strong>, Asemota H, Young L. Drug seeking behavior of amphetamine addicted Sprague-Dawley rats is eliminated after nutritional supplementation. J Behav Brain Sci. 2017;7(12).
-                </p>
-              </div>
-              
-              <div style={{
-                padding: isMobile ? '15px' : '20px',
-                borderLeft: '4px solid #72b046',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '0 8px 8px 0'
-              }}>
-                <p style={{ 
-                  fontWeight: '500', 
-                  marginBottom: '10px',
-                  fontSize: isMobile ? '0.95rem' : 'inherit' 
-                }}>
-                  Gardner NS, Luke KJS, Wheatley AO, <strong style={{ color: '#72b046' }}>et al. (includes Salako-Akande A)</strong>. Plasma cocaine metabolite levels and liver CYP450 3A4 isoenzyme activity as indicators of cocaine metabolism in rats treated with Salako supplements. In: Strategic Applications of Measurement Technologies and Instrumentation. 2019.
-                </p>
-              </div>
+              {pageData?.publications ? (
+                pageData.publications.map((pub, index) => (
+                  <div 
+                    key={index}
+                    style={{
+                      padding: isMobile ? '15px' : '20px',
+                      borderLeft: '4px solid #72b046',
+                      backgroundColor: '#f9f9f9',
+                      borderRadius: '0 8px 8px 0'
+                    }}
+                  >
+                    <p style={{ 
+                      fontWeight: '500', 
+                      marginBottom: '10px',
+                      fontSize: isMobile ? '0.95rem' : 'inherit' 
+                    }}>
+                      {pub.authors && pub.authors.includes("Salako-Akande A") ? (
+                        <span dangerouslySetInnerHTML={{ 
+                          __html: pub.authors.replace(
+                            /Salako-Akande A/g, 
+                            '<strong style="color: #72b046">Salako-Akande A</strong>'
+                          ) 
+                        }} />
+                      ) : pub.authors}
+                      {pub.title && `. ${pub.title}`}
+                      {pub.journal && `. ${pub.journal}`}
+                      {pub.publicationDate && `. ${pub.publicationDate}`}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div style={{
+                    padding: isMobile ? '15px' : '20px',
+                    borderLeft: '4px solid #72b046',
+                    backgroundColor: '#f9f9f9',
+                    borderRadius: '0 8px 8px 0'
+                  }}>
+                    <p style={{ 
+                      fontWeight: '500', 
+                      marginBottom: '10px',
+                      fontSize: isMobile ? '0.95rem' : 'inherit' 
+                    }}>
+                      Towers EB, Williams IL, Aristidou ASK, <strong style={{ color: '#72b046' }}>et al. (includes Salako-Akande A)</strong>. Impact of SMAASH-C, a novel nutritional supplement, on drug-seeking and toxicity in female and male rats. Transl Psychiatry. 2024;14.
+                    </p>
+                  </div>
+                  
+                  <div style={{
+                    padding: isMobile ? '15px' : '20px',
+                    borderLeft: '4px solid #72b046',
+                    backgroundColor: '#f9f9f9',
+                    borderRadius: '0 8px 8px 0'
+                  }}>
+                    <p style={{ 
+                      fontWeight: '500', 
+                      marginBottom: '10px',
+                      fontSize: isMobile ? '0.95rem' : 'inherit' 
+                    }}>
+                      Young L, Webber-Waugh A, Thaxter K. Drug-seeking behavior is significantly attenuated in nutritionally supplemented cocaine withdrawn Sprague-Dawley rats. J Behav Brain Sci. 2021;11(7).
+                    </p>
+                  </div>
+                  
+                  <div style={{
+                    padding: isMobile ? '15px' : '20px',
+                    borderLeft: '4px solid #72b046',
+                    backgroundColor: '#f9f9f9',
+                    borderRadius: '0 8px 8px 0'
+                  }}>
+                    <p style={{ 
+                      fontWeight: '500', 
+                      marginBottom: '10px',
+                      fontSize: isMobile ? '0.95rem' : 'inherit' 
+                    }}>
+                      Webber-Waugh A, Thaxter Nesbeth K, Anderson-Johnson P, <strong style={{ color: '#72b046' }}>Salako-Akande A</strong>, Asemota H, Young L. Drug seeking behavior of amphetamine addicted Sprague-Dawley rats is eliminated after nutritional supplementation. J Behav Brain Sci. 2017;7(12).
+                    </p>
+                  </div>
+                  
+                  <div style={{
+                    padding: isMobile ? '15px' : '20px',
+                    borderLeft: '4px solid #72b046',
+                    backgroundColor: '#f9f9f9',
+                    borderRadius: '0 8px 8px 0'
+                  }}>
+                    <p style={{ 
+                      fontWeight: '500', 
+                      marginBottom: '10px',
+                      fontSize: isMobile ? '0.95rem' : 'inherit' 
+                    }}>
+                      Gardner NS, Luke KJS, Wheatley AO, <strong style={{ color: '#72b046' }}>et al. (includes Salako-Akande A)</strong>. Plasma cocaine metabolite levels and liver CYP450 3A4 isoenzyme activity as indicators of cocaine metabolism in rats treated with Salako supplements. In: Strategic Applications of Measurement Technologies and Instrumentation. 2019.
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

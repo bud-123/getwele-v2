@@ -1,140 +1,128 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from '../Layouts/PageLayout';
+import { getProductPage } from '../lib/sanityClient';
 
+// Define types for Sanity data
+interface SanityImage {
+  asset?: {
+    _id?: string;
+    url?: string;
+  }
+}
 
+interface Product {
+  title: string;
+  description: string;
+  benefit: string;
+  buttonText: string;
+  buttonLink?: string;
+  color: string;
+  image?: SanityImage;
+}
+
+interface ProductPageData {
+  pageTitle?: string;
+  products?: Product[];
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
+}
 
 const Products: React.FC = () => {
+  // State for storing the fetched data
+  const [pageData, setPageData] = useState<ProductPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Default products data
+  const defaultProducts: Product[] = [
+    {
+      title: "SMAASH-C",
+      description: "SMAASH-C is a proprietary blend of nutritional supplements, which will be provided under qualified supervision. These combined bio-available balanced supplements are source of nutrients that are deficient in Substance Use Disorder (SUD) Individuals of cocaine, nicotine and marijuana.",
+      benefit: "Helps the brain replenish Dopamine, Serotonin, Nor-Epinephrine and Epinephrine.",
+      buttonText: "Learn More",
+      color: "#4CAF50"
+    },
+    {
+      title: "SMAASH-A",
+      description: "SMAASH-A Is a proprietary blend of nutritional supplement which will be provided under qualified supervision. These combined bio-available balanced supplements are source of nutrients that the brain needs to replenish its chemicals which may have been disrupted by alcohol abuse.",
+      benefit: "Specific Benefit: Help the brain replenish Glutamic Acid, the neurotransmitter reported to be deficient in alcoholics",
+      buttonText: "Learn More",
+      color: "#FF6B6B"
+    },
+    {
+      title: "SMAASH-H",
+      description: "SMAASH-H is a propriety blend of nutritional supplements which will be provided under qualified supervision.",
+      benefit: "Specific Benefit: Help the body to synthesize and block the break down of endorphines and enkephalines which are natural pain killers.",
+      buttonText: "Learn More",
+      color: "#3B82F6"
+    }
+  ];
+
+  // Fetch data from Sanity
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getProductPage();
+        setPageData(data);
+      } catch (error) {
+        console.error("Error fetching product page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Use pageData if available, otherwise fall back to defaultProducts
+  const products = pageData?.products || defaultProducts;
+
+  if (loading) {
+    return (
+      <PageLayout>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh' 
+        }}>
+          Loading...
+        </div>
+      </PageLayout>
+    );
+  }
+
   return (
     <PageLayout>
       <div className="container">
-        <h1 className="products-title">Our Products</h1>
+        <h1 className="products-title">{pageData?.pageTitle || "Our Products"}</h1>
         
         <div className="product-cards">
-          {/* SMAASH-C Product Card */}
-          <div className="product-card" style={{ backgroundColor: '#4CAF50', position: 'relative' }}>
-            {/* 
-            <span
-              style={{
-                position: 'absolute',
-                top: 16,
-                right: 16,
-                background: '#000',
-                color: '#fff',
-                borderRadius: '999px',
-                padding: '4px 16px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                letterSpacing: '1px',
-                zIndex: 2,
-              }}
+          {products.map((product, index) => (
+            <div 
+              key={index} 
+              className="product-card" 
+              style={{ backgroundColor: product.color, position: 'relative' }}
             >
-              Pending
-            </span>
-            */}
-            <div className="product-content">
-              <div className="product-info">
-                <h2 className="product-name">SMAASH-C</h2>
-                <p className="product-description">
-                  SMAASH-C is a proprietary blend of nutritional supplements, which will be provided under qualified supervision. These combined bio-available balanced supplements are source of nutrients that are deficient in Substance Use Disorder (SUD) Individuals of cocaine, nicotine and marijuana.
-                </p>
-                <p className="product-benefit">
-                  Helps the brain replenish Dopamine, Serotonin, Nor-Epinephrine and Epinephrine.
-                </p>
-                <button className="learn-more-btn">Learn More</button>
-              </div>
-              <div className="product-image-container">
-                <img 
-                  src={require("../Assets/Products/smaash-c-image.png")} 
-                  alt="SMAASH-C Product" 
-                  className="product-image"
-                />
+              <div className="product-content">
+                <div className="product-info">
+                  <h2 className="product-name">{product.title}</h2>
+                  <p className="product-description">{product.description}</p>
+                  <p className="product-benefit">{product.benefit}</p>
+                  <button className="learn-more-btn">{product.buttonText}</button>
+                </div>
+                <div className="product-image-container">
+                  <img 
+                    src={product.image?.asset?.url || require(`../Assets/Products/${product.title.toLowerCase().replace(/\s+/g, '-')}-image.png`)} 
+                    alt={`${product.title} Product`} 
+                    className="product-image"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* SMAASH-A Product Card */}
-          <div className="product-card" style={{ backgroundColor: '#FF6B6B', position: 'relative' }}>
-            {/* 
-            <span
-              style={{
-                position: 'absolute',
-                top: 16,
-                right: 16,
-                background: '#000',
-                color: '#fff',
-                borderRadius: '999px',
-                padding: '4px 16px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                letterSpacing: '1px',
-                zIndex: 2,
-              }}
-            >
-              Pending
-            </span>
-            */}
-            <div className="product-content">
-              <div className="product-info">
-                <h2 className="product-name">SMAASH-A</h2>
-                <p className="product-description">
-                  SMAASH-A Is a proprietary blend of nutritional supplement which will be provided under qualified supervision. These combined bio-available balanced supplements are source of nutrients that the brain needs to replenish its chemicals which may have been disrupted by alcohol abuse.
-                </p>
-                <p className="product-benefit">
-                  Specific Benefit: Help the brain replenish Glutamic Acid, the neurotransmitter reported to be deficient in alcoholics
-                </p>
-                <button className="learn-more-btn">Learn More</button>
-              </div>
-              <div className="product-image-container">
-                <img 
-                  src={require("../Assets/Products/smaash-a-image.png")} 
-                  alt="SMAASH-A Product" 
-                  className="product-image"
-                />
-              </div>
-            </div>
-          </div>
-          
-          {/* SMAASH-H Product Card */}
-          <div className="product-card" style={{ backgroundColor: '#3B82F6', position: 'relative' }}>
-            {/* 
-            <span
-              style={{
-                position: 'absolute',
-                top: 16,
-                right: 16,
-                background: '#000',
-                color: '#fff',
-                borderRadius: '999px',
-                padding: '4px 16px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                letterSpacing: '1px',
-                zIndex: 2,
-              }}
-            >
-              Pending
-            </span>
-            */}
-            <div className="product-content">
-              <div className="product-info">
-                <h2 className="product-name">SMAASH-H</h2>
-                <p className="product-description">
-                  SMAASH-H is a propriety blend of nutritional supplements which will be provided under qualified supervision.
-                </p>
-                <p className="product-benefit">
-                  Specific Benefit: Help the body to synthesize and block the break down of endorphines and enkephalines which are natural pain killers.
-                </p>
-                <button className="learn-more-btn">Learn More</button>
-              </div>
-              <div className="product-image-container">
-                <img 
-                  src={require("../Assets/Products/Smaash-H-image.png")} 
-                  alt="SMAASH-H Product" 
-                  className="product-image"
-                />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </PageLayout>
