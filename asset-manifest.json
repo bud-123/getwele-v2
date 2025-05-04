@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/getwele-v2/static/css/main.97eaaacc.css",
-    "main.js": "/getwele-v2/static/js/main.98ecf968.js",
+    "main.js": "/getwele-v2/static/js/main.b87c851e.js",
     "static/js/796.9af8b96d.chunk.js": "/getwele-v2/static/js/796.9af8b96d.chunk.js",
     "static/js/165.e4661b4d.chunk.js": "/getwele-v2/static/js/165.e4661b4d.chunk.js",
     "static/js/453.4e4e2421.chunk.js": "/getwele-v2/static/js/453.4e4e2421.chunk.js",
@@ -25,13 +25,13 @@
     "static/media/getwele-logo.jpg": "/getwele-v2/static/media/getwele-logo.75da65b70f0fc08d8518.jpg",
     "index.html": "/getwele-v2/index.html",
     "main.97eaaacc.css.map": "/getwele-v2/static/css/main.97eaaacc.css.map",
-    "main.98ecf968.js.map": "/getwele-v2/static/js/main.98ecf968.js.map",
+    "main.b87c851e.js.map": "/getwele-v2/static/js/main.b87c851e.js.map",
     "796.9af8b96d.chunk.js.map": "/getwele-v2/static/js/796.9af8b96d.chunk.js.map",
     "165.e4661b4d.chunk.js.map": "/getwele-v2/static/js/165.e4661b4d.chunk.js.map",
     "453.4e4e2421.chunk.js.map": "/getwele-v2/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97eaaacc.css",
-    "static/js/main.98ecf968.js"
+    "static/js/main.b87c851e.js"
   ]
 }
