@@ -403,7 +403,7 @@ const About = () => {
                 display: 'flex',
                 justifyContent: 'center'
               }}>
-                <a href="/research#/research" style={{
+                <a href="/getwele-v2/#/research" style={{
                   display: 'inline-block',
                   padding: '12px 20px',
                   border: '2px solid #72b046',

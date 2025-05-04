@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "dotenv -e .env -- gh-pages -d build -u \"Basil Udo <basil@xeddy.app>\" -r https://$GH_TOKEN@github.com/bud-123/getwele-v2.git"
+    "deploy": "GH_TOKEN=$(grep GH_TOKEN .env | cut -d '=' -f2) && gh-pages -d build -u \"bud-123 <basil@xeddy.app>\" -r https://${GH_TOKEN}@github.com/bud-123/getwele-v2.git"
   },
   "eslintConfig": {
     "extends": [
