@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageLayout from "../Layouts/PageLayout";
 import LogoSection from "../components/LogoSection";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { getHomePage } from "../lib/sanityClient";
+import getweleHero1 from "../Assets/Images/getwele-hero-im.png";
+import getweleHero2 from "../Assets/Images/getwele-hero2-graphic.png";
+import getweleHero3 from "../Assets/Images/getwele-hero3-graphic.png";
 
 // Define proper types for your data
 interface CardParagraph {
@@ -16,6 +19,20 @@ interface CardContent {
   icon: string;
   color: string;
   content: CardParagraph[];
+}
+
+interface HeroSlide {
+  title: string[];
+  subtitle: string[];
+  buttonText: string;
+  buttonLink: string;
+  image?: string;
+  slideImage?: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+  };
 }
 
 interface HomePageData {
@@ -31,6 +48,7 @@ interface HomePageData {
       };
     };
   };
+  heroSlides: HeroSlide[];
   cards: CardContent[];
   researchSection?: {
     title: string;
@@ -68,6 +86,81 @@ const Home: React.FC = () => {
   // Properly type your state
   const [pageData, setPageData] = useState<HomePageData | null>(null);
   const [loading, setLoading] = useState(true);
+  
+  // Add state for slide animation direction
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const navigate = useNavigate();
+
+  // Default hero slides data with proper typing
+  const defaultHeroSlides: HeroSlide[] = [
+            {
+                title: ["Optimal Wellness", "& Improved", "Quality of Life"],
+                subtitle: ["Less desire.", "Less seeking."],
+                buttonText: "START YOUR JOURNEY",
+                buttonLink: "#cards-section",
+                image: getweleHero1,
+            },
+    {
+      title: [
+        "How can current",
+        "recovery support be made more effective?",
+      ],
+      subtitle: ["The role of restoring", "biochemical balance"],
+      buttonText: "LEARN MORE",
+      buttonLink: "/about",
+      image: getweleHero2,
+    },
+    {
+      title: [
+        "The research studies on",
+        "our proprietary products",
+      ],
+      subtitle: [
+        '"When there is no desire,',
+        'there is no seeking."',
+      ],
+      buttonText: "SEE RESEARCH",
+      buttonLink: "/research",
+      image: getweleHero3,
+    },
+  ];
+
+  // Use pageData if available, otherwise fall back to defaultHeroSlides
+  const heroSlides = pageData?.heroSlides || defaultHeroSlides;
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPrevSlide(currentSlide);
+      setSlideDirection("left");
+      setIsAnimating(true);
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      
+      // Reset animation state after transition completes
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 500);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [currentSlide, heroSlides.length]);
+
+  const goToSlide = (idx: number) => {
+    if (idx === currentSlide) return;
+    
+    setPrevSlide(currentSlide);
+    setSlideDirection(idx > currentSlide ? "left" : "right");
+    setIsAnimating(true);
+    setCurrentSlide(idx);
+    
+    // Reset animation state after transition completes
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -250,100 +343,172 @@ const Home: React.FC = () => {
   return (
     <PageLayout>
       <div>
-        <div className="hero-section" style={{ 
-          width: '100%', 
-          overflow: 'hidden', 
-          background: 'linear-gradient(to right, #0f4935, #72b046)',
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: isMobile ? '50px 20px' : '0 50px 0 100px',
-          minHeight: '575px',
-          height: 'auto'
-        }}>
-          <div className="hero-content" style={{
-            color: 'white',
-            maxWidth: '550px',
-            textAlign: 'left',
-            margin: isMobile ? '0 auto 40px' : '0 0 0 225px'
-          }}>
-            <h1 style={{
-              fontSize: isMobile ? '3.5rem' : '5.5rem',
-              margin: '0',
-              lineHeight: '1.1'
-            }}>
-              {pageData?.heroSection.title ? (
-                pageData.heroSection.title.map((line: string, i: number) => (
-                  <React.Fragment key={i}>
-                    {line}<br />
-                  </React.Fragment>
-                ))
-              ) : (
-                <>
-                  Smash<br />
-                  Your<br />
-                  Drug<br />
-                  Seeking
-                </>
-              )}
+        {/* HERO CAROUSEL */}
+        <div
+          className="hero-section"
+          style={{
+            width: "100%",
+            overflow: "hidden",
+            background: "linear-gradient(to right, #0f4935, #72b046)",
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: isMobile ? "50px 20px" : "0 50px 0 100px",
+            minHeight: "575px",
+            height: "auto",
+            position: "relative",
+          }}
+        >
+          {/* Slide Content */}
+          <div
+            className="hero-content"
+            style={{
+              color: "white",
+              maxWidth: "550px",
+              textAlign: "left",
+              margin: isMobile ? "0 auto 40px" : "0 0 0 225px",
+              transition: "all 0.5s",
+              height: "200px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <h1
+              style={{
+                fontSize: isMobile ? "2.2rem" : "3.5rem",
+                margin: "0",
+                lineHeight: "1.1",
+              }}
+            >
+              {heroSlides[currentSlide].title.map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </h1>
-            <h3 style={{
-              fontWeight: 'normal',
-              fontSize: isMobile ? '1.5rem' : '2rem',
-              margin: '20px 0'
-            }}>
-              {pageData?.heroSection.subtitle ? (
-                pageData.heroSection.subtitle.map((line: string, i: number) => (
-                  <React.Fragment key={i}>
-                    {line}<br />
-                  </React.Fragment>
-                ))
-              ) : (
-                <>
-                  Less desire.<br />
-                  Less seeking.
-                </>
-              )}
+            <h3
+              style={{
+                fontWeight: "normal",
+                fontSize: isMobile ? "1rem" : "1.3rem",
+                margin: "10px 0",
+              }}
+            >
+              {heroSlides[currentSlide].subtitle.map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </h3>
-            <Link 
+            <Link
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('cards-section')?.scrollIntoView({ behavior: 'smooth' });
-              }} 
-              to="#cards-section" 
+                const targetLink = heroSlides[currentSlide].buttonLink || "#cards-section";
+                if (targetLink.startsWith('#')) {
+                  // Internal scroll on the same page
+                  const targetId = targetLink.substring(1); // Remove the # character
+                  const element = document.getElementById(targetId);
+                  
+                  if (element) {
+                    // Add a slight delay to ensure DOM is fully rendered
+                    setTimeout(() => {
+                      const headerOffset = 100; // Account for any fixed headers
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      
+                      window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                      });
+                    }, 100);
+                  } else {
+                    console.error(`Element with id "${targetId}" not found`);
+                  }
+                } else {
+                  // Use React Router's navigation for HashRouter
+                  navigate(targetLink);
+                }
+              }}
+              to={heroSlides[currentSlide].buttonLink || "#cards-section"}
               style={{
-                display: 'inline-block',
-                backgroundColor: '#77C4BD',
-                color: 'white',
-                textDecoration: 'none',
-                padding: '15px 30px',
-                borderRadius: '30px',
-                fontSize: '1.2rem',
-                fontWeight: 'bold',
-                marginTop: '20px',
-                marginBottom: '20px'
-              }}>
-              {pageData?.heroSection.buttonText || "START YOUR JOURNEY"} &nbsp;<span className="material-icons" style={{ verticalAlign: 'middle', fontSize: '1.4rem' }}>chevron_right</span>
+                display: "inline-block",
+                backgroundColor: "#77C4BD",
+                color: "white",
+                textDecoration: "none",
+                padding: "15px 30px",
+                borderRadius: "30px",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                marginTop: "20px",
+                marginBottom: "20px",
+              }}
+            >
+              {heroSlides[currentSlide].buttonText} &nbsp;
+              <span
+                className="material-icons"
+                style={{ verticalAlign: "middle", fontSize: "1.4rem" }}
+              >
+                chevron_right
+              </span>
             </Link>
           </div>
-          <div className="hero-image" style={{
-            height: 'auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: isMobile ? '100%' : 'auto'
-          }}>
-            <img 
-              src={pageData?.heroSection.heroImage?.asset.url || require("../Assets/Images/getwele-hero-im.png")} 
-              alt="Smaash Products"
+          {/* Slide Image */}
+          <div
+            className="hero-image"
+            style={{
+              height: "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: isMobile ? "100%" : "auto",
+              transform: isAnimating 
+                ? `translateX(${slideDirection === "left" ? "100px" : "-100px"})` 
+                : "translateX(0)",
+              opacity: isAnimating ? 0 : 1,
+              transition: "all 0.5s ease-in-out",
+            }}
+          >
+            <img
+              src={heroSlides[currentSlide].slideImage?.asset?.url || heroSlides[currentSlide].image || ''}
+              alt="Hero Slide"
               style={{
-                height: 'auto',
-                maxHeight: '100%',
-                maxWidth: '100%',
-                margin: isMobile ? '0 auto' : '0 225px 0 0'
+                height: "auto",
+                maxHeight: "100%",
+                maxWidth: "100%",
+                margin: isMobile ? "0 auto" : "0 225px 0 0",
               }}
             />
+          </div>
+          {/* Carousel Dots */}
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              bottom: "30px",
+              transform: "translateX(-50%)",
+              display: "flex",
+              gap: "10px",
+            }}
+          >
+            {heroSlides.map((_, idx) => (
+              <span
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  borderRadius: "50%",
+                  background: idx === currentSlide ? "#fff" : "#b2dfdb",
+                  opacity: idx === currentSlide ? 1 : 0.5,
+                  cursor: "pointer",
+                  display: "inline-block",
+                  transition: "background 0.3s",
+                }}
+              />
+            ))}
           </div>
         </div>
 

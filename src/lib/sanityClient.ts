@@ -23,6 +23,18 @@ export async function getHomePage() {
           }
         }
       },
+      heroSlides[] {
+        title,
+        subtitle,
+        buttonText,
+        buttonLink,
+        slideImage {
+          asset->{
+            _id,
+            url
+          }
+        }
+      },
       cards[] {
         title,
         icon,
