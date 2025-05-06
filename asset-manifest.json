@@ -1,8 +1,7 @@
 {
   "files": {
     "main.css": "/getwele-v2/static/css/main.97eaaacc.css",
-    "main.js": "/getwele-v2/static/js/main.b87c851e.js",
-    "static/js/796.9af8b96d.chunk.js": "/getwele-v2/static/js/796.9af8b96d.chunk.js",
+    "main.js": "/getwele-v2/static/js/main.6d968446.js",
     "static/js/165.e4661b4d.chunk.js": "/getwele-v2/static/js/165.e4661b4d.chunk.js",
     "static/js/453.4e4e2421.chunk.js": "/getwele-v2/static/js/453.4e4e2421.chunk.js",
     "static/media/about-hero.jpg": "/getwele-v2/static/media/about-hero.9f99ab3d6849253c8e3c.jpg",
@@ -22,16 +21,17 @@
     "static/media/smaash-a-image.png": "/getwele-v2/static/media/smaash-a-image.8a28da6bf46bb5ed75a6.png",
     "static/media/about-studies-image.jpg": "/getwele-v2/static/media/about-studies-image.7063ba80d260dfab3e03.jpg",
     "static/media/smaash-c-image.png": "/getwele-v2/static/media/smaash-c-image.c4217d612308d7260e42.png",
+    "static/media/getwele-hero2-graphic.png": "/getwele-v2/static/media/getwele-hero2-graphic.44284fe593001b80e7c7.png",
+    "static/media/getwele-hero3-graphic.png": "/getwele-v2/static/media/getwele-hero3-graphic.54a399dacba779a8f5aa.png",
     "static/media/getwele-logo.jpg": "/getwele-v2/static/media/getwele-logo.75da65b70f0fc08d8518.jpg",
     "index.html": "/getwele-v2/index.html",
     "main.97eaaacc.css.map": "/getwele-v2/static/css/main.97eaaacc.css.map",
-    "main.b87c851e.js.map": "/getwele-v2/static/js/main.b87c851e.js.map",
-    "796.9af8b96d.chunk.js.map": "/getwele-v2/static/js/796.9af8b96d.chunk.js.map",
+    "main.6d968446.js.map": "/getwele-v2/static/js/main.6d968446.js.map",
     "165.e4661b4d.chunk.js.map": "/getwele-v2/static/js/165.e4661b4d.chunk.js.map",
     "453.4e4e2421.chunk.js.map": "/getwele-v2/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97eaaacc.css",
-    "static/js/main.b87c851e.js"
+    "static/js/main.6d968446.js"
   ]
 }
