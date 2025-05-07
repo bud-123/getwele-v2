@@ -111,7 +111,7 @@ const Products: React.FC = () => {
                   <h2 className="product-name">{product.title}</h2>
                   <p className="product-description">{product.description}</p>
                   <p className="product-benefit">{product.benefit}</p>
-                  <button className="learn-more-btn">{product.buttonText}</button>
+               {/*  <button className="learn-more-btn">{product.buttonText}</button>  */}
                 </div>
                 <div className="product-image-container">
                   <img 

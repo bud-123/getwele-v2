@@ -235,3 +235,15 @@ export async function getContactPage() {
     }
   `);
 }
+
+export async function getPressReleasePage() {
+  return sanityClient.fetch(`
+    *[_type == "pressReleasePage"][0] {
+      pageTitle,
+      pageSubtitle,
+      releaseDate,
+      content,
+      seo
+    }
+  `);
+}

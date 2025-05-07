@@ -293,3 +293,22 @@
     flex: auto;
   }
 }
+
+/* Bibliography card styles */
+.bibliography-card {
+  padding: 15px 20px;
+  border-left: 4px solid #72b046;
+  background-color: #f9f9f9;
+  border-radius: 0 8px 8px 0;
+  transition: background-color 0.3s ease;
+}
+
+.bibliography-card:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .bibliography-card {
+    padding: 15px;
+  }
+}

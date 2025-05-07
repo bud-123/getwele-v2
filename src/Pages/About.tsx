@@ -135,7 +135,7 @@ const About = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)'
+            backgroundColor: 'rgba(0, 0, 0, 0.25)'
           }}>
             <h1 style={{
               color: 'white',

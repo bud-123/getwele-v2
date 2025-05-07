@@ -41,8 +41,20 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
                 maxWidth: "100%" 
               }} />
             </Link>
-            
-            <button 
+          
+          <div style={{ 
+            textAlign: 'center', 
+            fontStyle: 'italic',
+            margin: isMobile ? '10px 0' : '0 auto',
+            color: '#555',
+            flex: 1,
+            maxWidth: '50%',
+            padding: '0 20px'
+          }}>
+            When there's no desire, there's no seeking.
+          </div>
+          
+          <button 
               className="mobile-menu-button" 
               onClick={toggleMobileMenu}
               style={{ 
@@ -69,6 +81,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
             <Link to="/about" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link to="/research" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Research</Link>
             <Link to="/products" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+            <Link to="/press-release" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Press Release</Link>
             <Link to="/contact" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
           </div>
         </div>
