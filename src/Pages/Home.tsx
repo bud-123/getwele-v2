@@ -96,7 +96,7 @@ const Home: React.FC = () => {
   // Default hero slides data with proper typing
   const defaultHeroSlides: HeroSlide[] = [
             {
-                title: ["Optimal Wellness", "& Improved", "Quality of Life"],
+                title: ["Achieve Optimal Wellness", "& Improved", "Quality of Life"],
                 subtitle: ["Less desire.", "Less seeking."],
                 buttonText: "START YOUR JOURNEY",
                 buttonLink: "#cards-section",

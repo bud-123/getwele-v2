@@ -221,6 +221,47 @@ const About = () => {
               <br />
               The result is that Alcohol/Drug abusers can stay abstinent, improve their nutritional status and general well-being. AFI has done studies in different countries – pilot observational study (Awele Clinic in the US), animal studies (UWIMONA University Jamaica), case studies (Federal Neuro-Psychiatric Hospital, Nigeria) and currently a preliminary study at University of Virginia (UVA) School of Medicine, Animal Division, USA.`}
             </p>
+            
+            {/* Board of Advisors Button */}
+            <div style={{
+              marginTop: '30px',
+              display: 'flex',
+              justifyContent: 'center'
+            }}>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('board-advisors');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                style={{
+                  display: 'inline-block',
+                  padding: '12px 20px',
+                  border: '2px solid #72b046',
+                  borderRadius: '30px',
+                  backgroundColor: 'transparent',
+                  color: '#000',
+                  fontSize: isMobile ? '1rem' : '1.1rem',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.target as HTMLButtonElement;
+                  target.style.backgroundColor = '#72b046';
+                  target.style.color = '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.target as HTMLButtonElement;
+                  target.style.backgroundColor = 'transparent';
+                  target.style.color = '#000';
+                }}
+              >
+                Meet Our Board of Advisors
+              </button>
+            </div>
           </div>
             
           {/* Mission Section with responsive layout */}
@@ -418,6 +459,350 @@ const About = () => {
                   Explore Our Research
                 </a>
               </div>
+            </div>
+          </div>
+          
+          {/* Board of Advisors Section */}
+          <div id="board-advisors" className="board-advisors-section" style={{
+            marginTop: isMobile ? '60px' : '80px',
+            marginBottom: isMobile ? '40px' : '60px'
+          }}>
+            <h2 style={{
+              fontSize: isMobile ? '2rem' : '2.5rem',
+              textAlign: 'center',
+              marginBottom: isMobile ? '40px' : '60px',
+              color: '#2c3e50',
+              borderBottom: '3px solid #72b046',
+              paddingBottom: '15px',
+              display: 'inline-block',
+              width: '100%'
+            }}>
+              Board of Advisors
+            </h2>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+              gap: isMobile ? '40px' : '30px',
+              maxWidth: '1200px',
+              margin: '0 auto'
+            }}>
+              
+              {/* David J. Fink */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  DF
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  David J. Fink, PhD (Dave)
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  Entrepreneur in Residence
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#666',
+                  marginBottom: '10px'
+                }}>
+                  david.fink@umbc.edu
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Dave has worked in biotechnology and biomedical product development for more than 40 years and he was a top officer of seven start-ups. In addition to advising life science incubator companies at bwtech@UMBC, he is the Site Miner for UMBC research that, with support from the Maryland Innovation Initiative, holds the potential for commercialization.
+                </p>
+              </div>
+
+              {/* Stephen Dordunoo */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  SD
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  Stephen Dordunoo, RPh; PhD
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  Founder, CSO at Kydes Pharmaceuticals
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Dr. Dordunoo is the Founder, CSO at Kydes Pharmaceuticals with over 30 years of experience in compounding, analysis, stability and testing. He is a registered Pharmacist with PhD in Pharmaceutics and has been running his business for the past 10 years.
+                  <br /><br />
+                  Dr. Dordunoo has been working with Dr. Biks on her formulations for the past 5 years. He provides products development, GMP advice and manufacturing services for Getwele's SMAASH-Products. He will continue to manufacture for Getwele.
+                </p>
+              </div>
+
+              {/* Diana Caldwel */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  DC
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  Diana Caldwel, PhD
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  CEO, Research Circle & Associates
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Dr. Caldwel is an experienced director with a demonstrated history of working in the research industry. She is skilled in Nonprofit Organizations, Research, Life Sciences, Strategic Planning, and Entrepreneurship. She is a strong business development professional with a Doctor of Philosophy (PhD) focused in Public Policy from University of Maryland Baltimore County.
+                  <br /><br />
+                  Dr Caldwel assists Getwele in strategic R&D planning and also gives advice on grant funding sources.
+                </p>
+              </div>
+
+              {/* Alicia Moran */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  AM
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  Alicia Moran
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  Founder and Managing Director, AM Media + Marketing
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Alicia is a seasoned, versatile, and results-oriented marketing communications consultant. She has experience in business development, government, academic, non-profit, and scientific work. Current clients come from the economic development, energy, biotechnology, university, clean tech, startup, business incubation, non-profit and association communities.
+                  <br /><br />
+                  Alicia provides most of the time, Public Relations activities for Getwele. She introduces Getwele to different agencies and advocacy groups. She also helps in sourcing for funds.
+                </p>
+              </div>
+
+              {/* Howard-Mitch */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  HM
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  Howard-Mitch, BS
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  Rehabilitation Counseling, Workforce Development
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Mitch is a member of the board. He is a veteran and a community activist. He has many years of community services and is a mentor to several young men.
+                </p>
+              </div>
+
+              {/* Rhodora C. Tumanon */}
+              <div style={{
+                background: '#fff',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '25px',
+                textAlign: 'center',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f0f0f0',
+                  margin: '0 auto 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  color: '#72b046',
+                  border: '3px solid #72b046'
+                }}>
+                  RT
+                </div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                  color: '#2c3e50'
+                }}>
+                  Rhodora C. Tumanon (Dr. T) Retired MD
+                </h3>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#72b046',
+                  marginBottom: '15px'
+                }}>
+                  Getwele's Acting Medical Director
+                </p>
+                <p style={{
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  color: '#555',
+                  textAlign: 'left'
+                }}>
+                  Dr. T is the acting Medical Director for Getwlele Recovery and Wellness Center, and member of the board.
+                  <br /><br />
+                  She was the Medical Director of Maryland Division Of Rehabilitation Services (DORS) for more than 40 years. She also mentors the CEO.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>

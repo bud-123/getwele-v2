@@ -81,6 +81,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
             <Link to="/about" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link to="/research" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Research</Link>
             <Link to="/products" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+            <Link to="/blog" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
             <Link to="/press-release" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Press Release</Link>
             <Link to="/contact" className="navbar-item" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
           </div>
