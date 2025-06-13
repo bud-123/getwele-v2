@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/getwele-v2/static/css/main.1dd61c56.css",
-    "main.js": "/getwele-v2/static/js/main.ab0ad012.js",
+    "main.css": "/getwele-v2/static/css/main.ac9c5dc3.css",
+    "main.js": "/getwele-v2/static/js/main.3f42a2be.js",
     "static/js/165.e4661b4d.chunk.js": "/getwele-v2/static/js/165.e4661b4d.chunk.js",
     "static/js/453.4e4e2421.chunk.js": "/getwele-v2/static/js/453.4e4e2421.chunk.js",
     "static/media/about-hero.jpg": "/getwele-v2/static/media/about-hero.9f99ab3d6849253c8e3c.jpg",
@@ -12,6 +12,8 @@
     "static/media/seal-of-md-logo.png": "/getwele-v2/static/media/seal-of-md-logo.2f9635059cc965a7accc.png",
     "static/media/uva-logo.png": "/getwele-v2/static/media/uva-logo.9c2d6afb8c4f0abac2eb.png",
     "static/media/getwele-hero-im.png": "/getwele-v2/static/media/getwele-hero-im.7be09c83beda897cb725.png",
+    "static/media/congrats-blog.png": "/getwele-v2/static/media/congrats-blog.4b627fb869ae2a29e0eb.png",
+    "static/media/bwtech-blog.png": "/getwele-v2/static/media/bwtech-blog.25d54b859f8e95073c62.png",
     "static/media/research-profile-image.jpeg": "/getwele-v2/static/media/research-profile-image.1185c7e36654908055fa.jpeg",
     "static/media/uowi-logo.png": "/getwele-v2/static/media/uowi-logo.902b44769978a8aaa6c6.png",
     "static/media/bwtech-logo.png": "/getwele-v2/static/media/bwtech-logo.c9e47d19fb4de869f62a.png",
@@ -23,15 +25,16 @@
     "static/media/smaash-c-image.png": "/getwele-v2/static/media/smaash-c-image.c4217d612308d7260e42.png",
     "static/media/getwele-hero2-graphic.png": "/getwele-v2/static/media/getwele-hero2-graphic.44284fe593001b80e7c7.png",
     "static/media/getwele-hero3-graphic.png": "/getwele-v2/static/media/getwele-hero3-graphic.54a399dacba779a8f5aa.png",
+    "static/media/biks-blog.jpeg": "/getwele-v2/static/media/biks-blog.f54f407cac07e90e29e2.jpeg",
     "static/media/getwele-logo.jpg": "/getwele-v2/static/media/getwele-logo.75da65b70f0fc08d8518.jpg",
     "index.html": "/getwele-v2/index.html",
-    "main.1dd61c56.css.map": "/getwele-v2/static/css/main.1dd61c56.css.map",
-    "main.ab0ad012.js.map": "/getwele-v2/static/js/main.ab0ad012.js.map",
+    "main.ac9c5dc3.css.map": "/getwele-v2/static/css/main.ac9c5dc3.css.map",
+    "main.3f42a2be.js.map": "/getwele-v2/static/js/main.3f42a2be.js.map",
     "165.e4661b4d.chunk.js.map": "/getwele-v2/static/js/165.e4661b4d.chunk.js.map",
     "453.4e4e2421.chunk.js.map": "/getwele-v2/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1dd61c56.css",
-    "static/js/main.ab0ad012.js"
+    "static/css/main.ac9c5dc3.css",
+    "static/js/main.3f42a2be.js"
   ]
 }
