@@ -312,3 +312,44 @@
     padding: 15px;
   }
 }
+
+/* Container to hide overflow */
+.scrolling-text {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+
+/* The actual text that scrolls */
+.scrolling-text span {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.full-width-banner {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  box-sizing: border-box;
+  z-index: 1000;
+}

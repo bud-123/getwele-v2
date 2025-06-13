@@ -21,8 +21,18 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
       <Banner 
         id="promo-banner"
         variant="rainbow"
-        message={<a href="https://www.nature.com/articles/s41398-024-02940-w" target="_blank" rel="noopener noreferrer">Published in Nature – Read the latest full article here.</a>}
-        height="2rem"
+        className="full-width-banner"
+        message={
+          <div className="scrolling-text">
+            <span style={{ 
+              minWidth: "3000px", 
+              paddingRight: "2rem",
+              animation: "marquee 20s linear infinite"
+            }}>
+              When there's no desire, there's no seeking.
+            </span>
+          </div>
+        }
       />
       <nav className="navbar">
         <div className="navbar-container" style={{ 
@@ -44,14 +54,14 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
           
           <div style={{ 
             textAlign: 'center', 
-            fontStyle: 'italic',
             margin: isMobile ? '10px 0' : '0 auto',
-            color: '#555',
             flex: 1,
             maxWidth: '50%',
             padding: '0 20px'
           }}>
-            When there's no desire, there's no seeking.
+            <a href="https://www.nature.com/articles/s41398-024-02940-w" target="_blank" rel="noopener noreferrer" style={{color: '#555', textDecoration: 'none'}}>
+              Published in Nature – Read the latest full article here.
+            </a>
           </div>
           
           <button 

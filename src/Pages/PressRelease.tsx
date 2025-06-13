@@ -7,14 +7,15 @@ const PressRelease: React.FC = () => {
   
   return (
     <PageLayout>
-      <div className="press-release-page" style={{
+      <div style={{
         width: '100%',
         backgroundColor: '#f8f9fa',
-        padding: isMobile ? '40px 15px' : '60px 20px'
+        minHeight: '100vh'
       }}>
-        <div className="press-release-content" style={{
+        <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
+          padding: isMobile ? '40px 20px' : '60px 20px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center'
