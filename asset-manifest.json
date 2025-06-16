@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.ac9c5dc3.css",
+    "main.css": "/static/css/main.7e1b3fbd.css",
     "main.js": "/static/js/main.3b719ba9.js",
     "static/js/165.e4661b4d.chunk.js": "/static/js/165.e4661b4d.chunk.js",
     "static/js/453.4e4e2421.chunk.js": "/static/js/453.4e4e2421.chunk.js",
@@ -17,6 +17,7 @@
     "static/media/research-profile-image.jpeg": "/static/media/research-profile-image.1185c7e36654908055fa.jpeg",
     "static/media/uowi-logo.png": "/static/media/uowi-logo.902b44769978a8aaa6c6.png",
     "static/media/bwtech-logo.png": "/static/media/bwtech-logo.c9e47d19fb4de869f62a.png",
+    "static/media/material-icons.woff2": "/static/media/material-icons.0c35d18bf06992036b69.woff2",
     "static/media/nih-logo.png": "/static/media/nih-logo.0313afafdc8e4976f055.png",
     "static/media/umbc-logo.png": "/static/media/umbc-logo.5dc6903567ec197eb2c3.png",
     "static/media/smaash-h-image.png": "/static/media/smaash-h-image.85d4b08c21f9e7501090.png",
@@ -28,13 +29,13 @@
     "static/media/biks-blog.jpeg": "/static/media/biks-blog.f54f407cac07e90e29e2.jpeg",
     "static/media/getwele-logo.jpg": "/static/media/getwele-logo.75da65b70f0fc08d8518.jpg",
     "index.html": "/index.html",
-    "main.ac9c5dc3.css.map": "/static/css/main.ac9c5dc3.css.map",
+    "main.7e1b3fbd.css.map": "/static/css/main.7e1b3fbd.css.map",
     "main.3b719ba9.js.map": "/static/js/main.3b719ba9.js.map",
     "165.e4661b4d.chunk.js.map": "/static/js/165.e4661b4d.chunk.js.map",
     "453.4e4e2421.chunk.js.map": "/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac9c5dc3.css",
+    "static/css/main.7e1b3fbd.css",
     "static/js/main.3b719ba9.js"
   ]
 }
