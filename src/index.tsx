@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '@material-design-icons/font/filled.css';
 
 // Disable React.StrictMode temporarily to check if it's causing issues with hooks
 const root = ReactDOM.createRoot(

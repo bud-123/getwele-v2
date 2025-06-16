@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-design-icons/font": "^0.14.15",
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^6.9.3",
     "@sanity/image-url": "^1.1.0",
@@ -54,5 +55,5 @@
     "tailwindcss": "^4.1.4",
     "typescript": "^4.9.5"
   },
-  "homepage": "https://bud-123.github.io/getwele-v2/"
+  "homepage": "https://getwele.com"
 }

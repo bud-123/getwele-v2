@@ -24,7 +24,7 @@ const sampleBlogPosts: BlogPost[] = [
     date: 'Mar 16, 2020',
     category: 'Blog',
     slug: 'boost-conversion-rate',
-    url: 'https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeig6roru2b4cwxk5auitnfaoq6z4n2phs4vmtsaukpjdvhw5pw6ore'
+    url: 'https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeic7l3cntnzahjewb4pufz3yqx3h6pkskxnvlh6zvsjwqeoacwafdm'
   },
   {
     id: '2',
@@ -325,7 +325,7 @@ const Blog: React.FC = () => {
               marginBottom: '1.5rem'
             }}>
               <iframe 
-                src="https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeig6roru2b4cwxk5auitnfaoq6z4n2phs4vmtsaukpjdvhw5pw6ore"
+                src="https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeic7l3cntnzahjewb4pufz3yqx3h6pkskxnvlh6zvsjwqeoacwafdm"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -338,7 +338,7 @@ const Blog: React.FC = () => {
             
             {/* External Link Button */}
             <a 
-              href="https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeig6roru2b4cwxk5auitnfaoq6z4n2phs4vmtsaukpjdvhw5pw6ore"
+              href="https://olive-actual-beaver-41.mypinata.cloud/ipfs/bafybeic7l3cntnzahjewb4pufz3yqx3h6pkskxnvlh6zvsjwqeoacwafdm"
               target="_blank"
               rel="noopener noreferrer"
               style={{
