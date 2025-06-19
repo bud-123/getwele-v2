@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7e1b3fbd.css",
-    "main.js": "/static/js/main.8d9951f9.js",
+    "main.css": "/static/css/main.a0d767a3.css",
+    "main.js": "/static/js/main.dbb40c47.js",
     "static/js/165.e4661b4d.chunk.js": "/static/js/165.e4661b4d.chunk.js",
     "static/js/453.4e4e2421.chunk.js": "/static/js/453.4e4e2421.chunk.js",
     "static/media/about-hero.jpg": "/static/media/about-hero.9f99ab3d6849253c8e3c.jpg",
@@ -15,18 +15,18 @@
     "static/media/congrats-blog.png": "/static/media/congrats-blog.4b627fb869ae2a29e0eb.png",
     "static/media/bwtech-blog.png": "/static/media/bwtech-blog.25d54b859f8e95073c62.png",
     "static/media/research-profile-image.jpeg": "/static/media/research-profile-image.1185c7e36654908055fa.jpeg",
+    "static/media/material-icons-outlined.woff2": "/static/media/material-icons-outlined.6f420cf17cc0d7676fad.woff2",
     "static/media/uowi-logo.png": "/static/media/uowi-logo.902b44769978a8aaa6c6.png",
     "static/media/bwtech-logo.png": "/static/media/bwtech-logo.c9e47d19fb4de869f62a.png",
     "static/media/material-icons.woff2": "/static/media/material-icons.0c35d18bf06992036b69.woff2",
     "static/media/nih-logo.png": "/static/media/nih-logo.0313afafdc8e4976f055.png",
     "static/media/umbc-logo.png": "/static/media/umbc-logo.5dc6903567ec197eb2c3.png",
     "static/media/smaash-h-image.png": "/static/media/smaash-h-image.85d4b08c21f9e7501090.png",
+    "static/media/fehmidaK.png": "/static/media/fehmidaK.5357e86fc281ed1f41d3.png",
     "static/media/stephenD.jpeg": "/static/media/stephenD.dd35f198e0cf59ca247c.jpeg",
     "static/media/smaash-a-image.png": "/static/media/smaash-a-image.8a28da6bf46bb5ed75a6.png",
     "static/media/about-studies-image.jpg": "/static/media/about-studies-image.7063ba80d260dfab3e03.jpg",
-    "static/media/aliciaM.jpeg": "/static/media/aliciaM.cba2e049c8af555d2474.jpeg",
     "static/media/smaash-c-image.png": "/static/media/smaash-c-image.c4217d612308d7260e42.png",
-    "static/media/dianaC.jpeg": "/static/media/dianaC.06a5e783e9aa820d7113.jpeg",
     "static/media/getwele-hero2-graphic.png": "/static/media/getwele-hero2-graphic.44284fe593001b80e7c7.png",
     "static/media/getwele-hero3-graphic.png": "/static/media/getwele-hero3-graphic.54a399dacba779a8f5aa.png",
     "static/media/biks-blog.jpeg": "/static/media/biks-blog.f54f407cac07e90e29e2.jpeg",
@@ -36,14 +36,15 @@
     "static/media/rp4.jpg": "/static/media/rp4.fe9192cc0a40e369521b.jpg",
     "static/media/rp2.jpg": "/static/media/rp2.a0f44d114429960119e1.jpg",
     "static/media/rp1.jpg": "/static/media/rp1.2c2a296a53fe6cc78f27.jpg",
+    "static/media/angelaJ.jpeg": "/static/media/angelaJ.f0919a124289725b3f78.jpeg",
     "index.html": "/index.html",
-    "main.7e1b3fbd.css.map": "/static/css/main.7e1b3fbd.css.map",
-    "main.8d9951f9.js.map": "/static/js/main.8d9951f9.js.map",
+    "main.a0d767a3.css.map": "/static/css/main.a0d767a3.css.map",
+    "main.dbb40c47.js.map": "/static/js/main.dbb40c47.js.map",
     "165.e4661b4d.chunk.js.map": "/static/js/165.e4661b4d.chunk.js.map",
     "453.4e4e2421.chunk.js.map": "/static/js/453.4e4e2421.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e1b3fbd.css",
-    "static/js/main.8d9951f9.js"
+    "static/css/main.a0d767a3.css",
+    "static/js/main.dbb40c47.js"
   ]
 }
