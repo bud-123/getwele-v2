@@ -276,18 +276,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '24px' : '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    WL
+                    <img 
+                      src={require("../Assets/Partners/rp1.jpg")} 
+                      alt="Wendy Lynch" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -342,18 +344,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '24px' : '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    DF
+                    <img 
+                      src={require("../Assets/Partners/rp2.jpg")} 
+                      alt="David J. Fink" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -400,18 +404,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '20px' : '16px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    KP
+                    <img 
+                      src={require("../Assets/Partners/rp3.jpeg")} 
+                      alt="KYDES Pharmaceuticals" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -450,18 +456,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '24px' : '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    KB
+                    <img 
+                      src={require("../Assets/Partners/rp4.jpg")} 
+                      alt="Kimberly Brown" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -516,18 +524,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '24px' : '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    HA
+                    <img 
+                      src={require("../Assets/Partners/rp5.jpg")} 
+                      alt="Helen N. Asemota" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -536,7 +546,7 @@ const Research = () => {
                       color: '#72b046',
                       marginBottom: '5px'
                     }}>
-                      Helen N. Asemota, Ph.D
+                      Helen N. Asemota, Ph.D.
                     </h3>
                     <p style={{
                       fontSize: '0.95rem',
@@ -567,7 +577,7 @@ const Research = () => {
                 </div>
               </div>
 
-              {/* Pete Estsacio */}
+              {/* Angela James - replaces Pete Estsacio */}
               <div style={{
                 backgroundColor: '#f8f9fa',
                 borderRadius: '12px',
@@ -584,18 +594,20 @@ const Research = () => {
                   <div style={{
                     width: isMobile ? '120px' : '100px',
                     height: isMobile ? '120px' : '100px',
-                    backgroundColor: '#72b046',
                     borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '24px' : '20px',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
                     flexShrink: 0
                   }}>
-                    PE
+                    <img 
+                      src={require("../Assets/Board/angelaJ.jpeg")} 
+                      alt="Angela James" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -604,7 +616,7 @@ const Research = () => {
                       color: '#72b046',
                       marginBottom: '5px'
                     }}>
-                      Pete Estsacio MD, Ph.D.
+                      Dr. Angela James, Ph.D.
                     </h3>
                     <p style={{
                       fontSize: '0.95rem',
@@ -612,14 +624,74 @@ const Research = () => {
                       color: '#2c3e50',
                       marginBottom: '10px'
                     }}>
-                      American Sample Archive
+                      Founder and CEO, Diversity Health NetWoRx, and Consultant for TEQ Enterprises LLC
                     </p>
                     <p style={{
                       fontSize: '0.9rem',
                       color: '#495057',
                       lineHeight: '1.5'
                     }}>
-                      Dr. Estsacio is the owner of American Sample Archive that Getwele will collaborate with and Dr Kann. In Dr Estsacio's laboratory, epigenetic markers will be identified to help manage the drug seeking behavior seen in individuals who have altered methylation and/or acetylation patterns that likely correlate with heroin dependence.
+                      Dr. James is a distinguished Drug Development expert and Biopharmaceutical executive with deep expertise in Clinical Pharmacology, Translational Medicine, and Clinical Development. With a proven track record of advancing novel therapeutics from early-stage research to regulatory approval, Dr. James has played a pivotal role in bringing lifesaving treatments to patients. She will leverage her technical expertise to develop and execute a Clinical Development strategy and Data Analysis Plan to meet the FDA requirements for clinical use of the nutritional supplements as treatment of cocaine addiction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dr. Fehmida Kapadia */}
+              <div style={{
+                backgroundColor: '#f8f9fa',
+                borderRadius: '12px',
+                padding: '20px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: isMobile ? 'column' : 'row',
+                  gap: '15px',
+                  alignItems: isMobile ? 'center' : 'flex-start'
+                }}>
+                  <div style={{
+                    width: isMobile ? '120px' : '100px',
+                    height: isMobile ? '120px' : '100px',
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    border: '3px solid #72b046',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src={require("../Assets/Board/fehmidaK.png")} 
+                      alt="Dr. Fehmida Kapadia" 
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '700',
+                      color: '#72b046',
+                      marginBottom: '5px'
+                    }}>
+                      Dr. Fehmida Kapadia, Ph.D.
+                    </h3>
+                    <p style={{
+                      fontSize: '0.95rem',
+                      fontWeight: '600',
+                      color: '#2c3e50',
+                      marginBottom: '10px'
+                    }}>
+                      Bio-Life Sciences
+                    </p>
+                    <p style={{
+                      fontSize: '0.9rem',
+                      color: '#495057',
+                      lineHeight: '1.5'
+                    }}>
+                      Dr. Fehmida has over 20 years of experience in biomedical entrepreneurship, consulting, teaching and research, and has helped nearly 100 entrepreneurial projects successfully progress in their startup journey. She brings valuable expertise in bio-life sciences and will contribute to Getwele's research initiatives and product development strategies.
                     </p>
                   </div>
                 </div>

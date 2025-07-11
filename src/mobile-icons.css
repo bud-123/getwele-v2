@@ -1,0 +1,45 @@
+/* Mobile-specific Material Icons fixes */
+.material-icons {
+  font-family: 'Material Icons', 'Material Icons Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+/* Ensure icons load on mobile webviews */
+@media screen and (max-width: 768px) {
+  .material-icons {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* Fallback for when icons don't load */
+.material-icons:empty::before {
+  content: "→"; /* Fallback for chevron_right */
+}
+
+.material-icons[data-icon="chevron_right"]:empty::before {
+  content: "→";
+}
+
+.material-icons[data-icon="close"]:empty::before {
+  content: "×";
+}
+
+.material-icons[data-icon="menu"]:empty::before {
+  content: "☰";
+} 

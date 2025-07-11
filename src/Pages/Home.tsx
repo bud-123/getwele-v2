@@ -449,6 +449,7 @@ const Home: React.FC = () => {
               {heroSlides[currentSlide].buttonText} &nbsp;
               <span
                 className="material-icons"
+                data-icon="chevron_right"
                 style={{ verticalAlign: "middle", fontSize: "1.4rem" }}
               >
                 chevron_right

@@ -54,7 +54,7 @@ const Products: React.FC = () => {
     {
       title: "SMAASH-H",
       description: "SMAASH-H is a propriety blend of nutritional supplements which will be provided under qualified supervision.",
-      benefit: "Specific Benefit: Help the body to synthesize and block the break down of endorphines and enkephalines which are natural pain killers.",
+      benefit: "Specific Benefit: Help the body to synthesize and block the break down of endorphins and enkephalins which are natural pain killers.",
       buttonText: "Learn More",
       color: "#3B82F6"
     }
@@ -111,6 +111,9 @@ const Products: React.FC = () => {
                   <h2 className="product-name">{product.title}</h2>
                   <p className="product-description">{product.description}</p>
                   <p className="product-benefit">{product.benefit}</p>
+                  <p className="fda-disclaimer" style={{ fontSize: '0.8em', fontStyle: 'italic', marginTop: '10px', opacity: 0.8 }}>
+                    This statement has not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+                  </p>
                {/*  <button className="learn-more-btn">{product.buttonText}</button>  */}
                 </div>
                 <div className="product-image-container">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageLayout from "../Layouts/PageLayout";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { getAboutPage } from "../lib/sanityClient";
@@ -444,7 +445,7 @@ const About = () => {
                 display: 'flex',
                 justifyContent: 'center'
               }}>
-                <a href="/getwele-v2/#/research" style={{
+                <Link to="/research" style={{
                   display: 'inline-block',
                   padding: '12px 20px',
                   border: '2px solid #72b046',
@@ -457,7 +458,7 @@ const About = () => {
                   transition: 'all 0.3s ease'
                 }}>
                   Explore Our Research
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -501,16 +502,19 @@ const About = () => {
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  backgroundColor: '#f0f0f0',
                   margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  color: '#72b046',
+                  overflow: 'hidden',
                   border: '3px solid #72b046'
                 }}>
-                  DF
+                  <img 
+                    src={require("../Assets/Board/rp2.jpg")} 
+                    alt="David J. Fink" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
                 <h3 style={{
                   fontSize: '1.3rem',
@@ -558,16 +562,19 @@ const About = () => {
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  backgroundColor: '#f0f0f0',
                   margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  color: '#72b046',
+                  overflow: 'hidden',
                   border: '3px solid #72b046'
                 }}>
-                  SD
+                  <img 
+                    src={require("../Assets/Board/stephenD.jpeg")} 
+                    alt="Stephen Dordunoo" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
                 <h3 style={{
                   fontSize: '1.3rem',
@@ -597,7 +604,7 @@ const About = () => {
                 </p>
               </div>
 
-              {/* Diana Caldwel */}
+              {/* Fehmida Kapadia */}
               <div style={{
                 background: '#fff',
                 borderRadius: '12px',
@@ -610,16 +617,19 @@ const About = () => {
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  backgroundColor: '#f0f0f0',
                   margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  color: '#72b046',
+                  overflow: 'hidden',
                   border: '3px solid #72b046'
                 }}>
-                  DC
+                  <img 
+                    src={require("../Assets/Board/fehmidaK.png")} 
+                    alt="Dr. Fehmida Kapadia" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
                 <h3 style={{
                   fontSize: '1.3rem',
@@ -627,7 +637,7 @@ const About = () => {
                   marginBottom: '5px',
                   color: '#2c3e50'
                 }}>
-                  Diana Caldwel, PhD
+                  Dr. Fehmida Kapadia, PhD
                 </h3>
                 <p style={{
                   fontSize: '1rem',
@@ -635,7 +645,7 @@ const About = () => {
                   color: '#72b046',
                   marginBottom: '15px'
                 }}>
-                  CEO, Research Circle & Associates
+                  Bio- Life-Sciences
                 </p>
                 <p style={{
                   fontSize: '0.9rem',
@@ -643,13 +653,11 @@ const About = () => {
                   color: '#555',
                   textAlign: 'left'
                 }}>
-                  Dr. Caldwel is an experienced director with a demonstrated history of working in the research industry. She is skilled in Nonprofit Organizations, Research, Life Sciences, Strategic Planning, and Entrepreneurship. She is a strong business development professional with a Doctor of Philosophy (PhD) focused in Public Policy from University of Maryland Baltimore County.
-                  <br /><br />
-                  Dr Caldwel assists Getwele in strategic R&D planning and also gives advice on grant funding sources.
+                  Dr. Fehmida has over 20 years of experience in biomedical entrepreneurship, consulting, teaching and research, and has helped nearly 100 entrepreneurial projects successfully progress in their startup journey.
                 </p>
               </div>
 
-              {/* Alicia Moran */}
+              {/* Angela James */}
               <div style={{
                 background: '#fff',
                 borderRadius: '12px',
@@ -662,16 +670,19 @@ const About = () => {
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  backgroundColor: '#f0f0f0',
                   margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  color: '#72b046',
+                  overflow: 'hidden',
                   border: '3px solid #72b046'
                 }}>
-                  AM
+                  <img 
+                    src={require("../Assets/Board/angelaJ.jpeg")} 
+                    alt="Angela James" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
                 <h3 style={{
                   fontSize: '1.3rem',
@@ -679,7 +690,7 @@ const About = () => {
                   marginBottom: '5px',
                   color: '#2c3e50'
                 }}>
-                  Alicia Moran
+                  Dr. Angela James, Ph.D.
                 </h3>
                 <p style={{
                   fontSize: '1rem',
@@ -687,7 +698,7 @@ const About = () => {
                   color: '#72b046',
                   marginBottom: '15px'
                 }}>
-                  Founder and Managing Director, AM Media + Marketing
+                  Founder and CEO, Diversity Health NetWoRx, and Consultant for TEQ Enterprises LLC
                 </p>
                 <p style={{
                   fontSize: '0.9rem',
@@ -695,9 +706,7 @@ const About = () => {
                   color: '#555',
                   textAlign: 'left'
                 }}>
-                  Alicia is a seasoned, versatile, and results-oriented marketing communications consultant. She has experience in business development, government, academic, non-profit, and scientific work. Current clients come from the economic development, energy, biotechnology, university, clean tech, startup, business incubation, non-profit and association communities.
-                  <br /><br />
-                  Alicia provides most of the time, Public Relations activities for Getwele. She introduces Getwele to different agencies and advocacy groups. She also helps in sourcing for funds.
+                  Dr. James is a distinguished Drug Development expert and Biopharmaceutical executive with deep expertise in Clinical Pharmacology, Translational Medicine, and Clinical Development. With a proven track record of advancing novel therapeutics from early-stage research to regulatory approval, Dr. James has played a pivotal role in bringing lifesaving treatments to patients. She will leverage her technical expertise to develop and execute a Clinical Development strategy and Data Analysis Plan to meet the FDA requirements for clinical use of the nutritional supplements as treatment of cocaine addiction.
                 </p>
               </div>
 
@@ -797,7 +806,7 @@ const About = () => {
                   color: '#555',
                   textAlign: 'left'
                 }}>
-                  Dr. T is the acting Medical Director for Getwlele Recovery and Wellness Center, and member of the board.
+                  Dr. T is the Chairperson for Getwlele Recovery and Wellness Center.
                   <br /><br />
                   She was the Medical Director of Maryland Division Of Rehabilitation Services (DORS) for more than 40 years. She also mentors the CEO.
                 </p>
